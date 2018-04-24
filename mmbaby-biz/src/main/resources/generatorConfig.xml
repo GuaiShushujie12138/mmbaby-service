@@ -1,0 +1,156 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <context id="context1" targetRuntime="MyBatis3">
+
+        <commentGenerator>
+            <property name="suppressAllComments" value="true" />
+        </commentGenerator>
+
+        <jdbcConnection driverClass="com.mysql.jdbc.Driver"
+                        connectionURL="jdbc:mysql://mysqldev.lsfash.cn:3307/ls_crm?useUnicode=true&amp;characterEncoding=UTF-8"
+                        userId="lscrm" password="5ZyyPasey1mkr3iv" />
+
+        <!-- 默认false，把JDBC DECIMAL 和 NUMERIC 类型解析为 Integer，为 true时把JDBC DECIMAL 和
+           NUMERIC 类型解析为java.math.BigDecimal -->
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="true"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="com.lianshang.crm.biz.entity"
+                            targetProject="src/main/java" />
+
+        <sqlMapGenerator targetPackage="config.sqlmap.crm"
+                         targetProject="src/main/resources" />
+
+        <javaClientGenerator targetPackage="com.lianshang.crm.biz.dao"
+            targetProject="src/main/java" type="XMLMAPPER" />
+
+
+        <!--<table schema="general" tableName="lscrm_ranking" domainObjectName="LscrmRankingEntity"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+
+            <!--<columnOverride column="ranking_type" jdbcType="TINYINT" javaType="Integer"/>-->
+            <!--<columnOverride column="all_ranking_status" jdbcType="TINYINT" javaType="Integer"/>-->
+            <!--<columnOverride column="region_ranking_status" jdbcType="TINYINT" javaType="Integer"/>-->
+            <!--<columnOverride column="new_employee" jdbcType="TINYINT" javaType="Integer"/>-->
+            <!--<columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>-->
+        <!--</table>-->
+
+
+        <table schema="general" tableName="lscrm_customer_site" domainObjectName="LscrmCustomerSite"
+          enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"
+          enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+
+            <columnOverride column="type" jdbcType="TINYINT" javaType="Integer"/>
+            <columnOverride column="default_address" jdbcType="TINYINT" javaType="Integer"/>
+            <columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>
+        </table>
+
+        <table schema="general" tableName="lscrm_customer_contact_site" domainObjectName="LscrmCustomerContactSite"
+          enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"
+          enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+
+            <columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>
+        </table>
+
+        <table schema="general" tableName="lscrm_customer_sales_opportunity" domainObjectName="LscrmCustomerSalesOpportunity"
+          enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"
+          enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+
+            <columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>
+        </table>
+
+        <table schema="general" tableName="lscrm_customer_sales_opportunity_product" domainObjectName="LscrmCustomerSalesOpportunityProduct"
+          enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"
+          enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+
+            <columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>
+        </table>
+
+        <table schema="general" tableName="lscrm_customer_statistics" domainObjectName="LscrmCustomerStatistics"
+          enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"
+          enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+
+            <columnOverride column="ef_open_status" jdbcType="TINYINT" javaType="Integer"/>
+            <columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>
+        </table>
+
+        <table schema="general" tableName="lscrm_customer_property" domainObjectName="LscrmCustomerProperty"
+          enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"
+          enableSelectByExample="true" selectByExampleQueryId="true">
+            <property name="useActualColumnNames" value="false"/>
+
+            <columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>
+        </table>
+        <!--<table schema="general" tableName="lscrm_customer_real_name_audit_log" domainObjectName="LscrmCustomerRealNameAuditLog"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+
+            <!--<columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>-->
+        <!--</table>-->
+        <!--<table schema="general" tableName="lscrm_customer_real_name_audit_pic"-->
+          <!--domainObjectName="LscrmCustomerRealNameAuditPic"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+
+            <!--<columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>-->
+        <!--</table>-->
+
+        <!--<table schema="general" tableName="lscrm_commission_item"-->
+          <!--domainObjectName="LscrmCommissionItemEntity"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="false"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true">-->
+            <!--<property name="useActualColumnNames" value="false"/>-->
+
+            <!--<columnOverride column="validity" jdbcType="TINYINT" javaType="Boolean"/>-->
+        <!--</table>-->
+        <!--<table tableName="lscrm_customer_layer" domainObjectName="LscrmCustomerLayer"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_layer_condition" domainObjectName="LscrmCustomerLayerCondition"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_layer_relation" domainObjectName="LscrmCustomerLayerRelation"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_limitation" domainObjectName="LscrmCustomerLimitation"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_limitation_layer" domainObjectName="LscrmCustomerLimitationLayer"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_release" domainObjectName="LscrmCustomerRelease"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_release_condition" domainObjectName="LscrmCustomerReleaseCondition"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_release_layer" domainObjectName="LscrmCustomerReleaseLayer"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+        <!--<table tableName="lscrm_customer_release_white" domainObjectName="LscrmCustomerReleaseWhite"-->
+          <!--enableCountByExample="true" enableUpdateByExample="true" enableDeleteByExample="true"-->
+          <!--enableSelectByExample="true" selectByExampleQueryId="true"></table>-->
+
+    </context>
+
+
+</generatorConfiguration>
