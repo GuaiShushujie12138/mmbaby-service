@@ -50,7 +50,60 @@ CREATE TABLE `product` (
   `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
   `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
   `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效',
-  `item_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '商品编号',
   `shop_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '卖家编号',
-  ``
+  `inventory` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '库存',
+  `price` double(10, 2) NOT NULL DEFAULT '0.00' COMMENT'单价'
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='商品表';
+
+#商家表
+CREATE TABLE `shop` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '商家ID',
+  `name` varchar(60) NOT NULL DEFAULT '怪蜀黍母婴' COMMENT '商家名称',
+  `country` tinyint(2) not null DEFAULT '1' COMMENT '国家',
+  `province` tinyint(2) not null DEFAULT '1' COMMENT '省份',
+  `city` tinyint(2) not null DEFAULT '1' COMMENT '城市',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
+  `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
+  `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效'
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='商家表';
+
+#订单表
+CREATE TABLE `order` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '订单id',
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '客户ID',
+  `amount` double(12, 2) NOT NULL DEFAULT '0.00' COMMENT '订单总额',
+  `number` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '订单商品总数',
+  `freight` double(8, 2) NOT NULL DEFAULT '0.00' COMMENT '运费',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
+  `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
+  `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效'
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='订单表';
+
+#订单项表
+CREATE TABLE `order_line` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '订单项id',
+  `item_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '商品id',
+  `amount` double(12, 2) NOT NULL DEFAULT '0.00' COMMENT '订单项总额',
+  `number` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '订单项商品总数',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
+  `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
+  `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效'
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='订单表';
+
+
+#地区表
+CREATE TABLE `region` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '地区id',
+  `country` int()
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
+  `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
+  `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效',
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='地区表';
