@@ -96,14 +96,40 @@ CREATE TABLE `order_line` (
   `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效'
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
-
 #地区表
 CREATE TABLE `region` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '地区id',
-  `country` int()
+  `country` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '国家id',
+  `province` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '省份id',
+  `city` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '城市id',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
   `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
   `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效',
-) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='地区表';
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='地区表';
+
+#评论表
+CREATE TABLE `comment` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id',
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '相关的客户id',
+  `item_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '相关的商品id',
+  `content` varchar(225) NOT NULL DEFAULT '' COMMENT '评论的内容',
+  `star` tinyint(3) unsigned NOT NULL DEFAULT '5' COMMENT '满意星级',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
+  `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
+  `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效',
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='评论表';
+
+#资讯表
+CREATE TABLE `information` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '资讯id',
+  `content` varchar(250) NOT NULL DEFAULT '' COMMENT '咨询内容',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
+  `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
+  `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效',
+) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='评论表';
