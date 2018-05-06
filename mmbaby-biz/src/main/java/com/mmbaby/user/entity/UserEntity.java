@@ -1,7 +1,10 @@
 package com.mmbaby.user.entity;
 
+import groovy.transform.ToString;
+
 import java.util.Date;
 
+@ToString
 public class UserEntity {
     private Integer id;
 
@@ -14,6 +17,8 @@ public class UserEntity {
     private String password;
 
     private Integer sex;
+
+    private Integer role;
 
     private Boolean validity;
 
@@ -75,6 +80,14 @@ public class UserEntity {
 
     public void setSex(Integer sex) {
         this.sex = sex;
+    }
+
+    public Integer getRole() {
+        return role;
+    }
+
+    public void setRole(Integer role) {
+        this.role = role;
     }
 
     public Boolean getValidity() {

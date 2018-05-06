@@ -8,6 +8,7 @@
     <result column="head_picture" property="headPicture" jdbcType="VARCHAR" />
     <result column="password" property="password" jdbcType="VARCHAR" />
     <result column="sex" property="sex" jdbcType="INTEGER" />
+    <result column="role" property="role" jdbcType="INTEGER" />
     <result column="validity" property="validity" jdbcType="TINYINT" />
     <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
@@ -75,8 +76,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_name, mobile, head_picture, password, sex, validity, register_time, update_time, 
-    address, country, province, city
+    id, user_name, mobile, head_picture, password, sex, role, validity, register_time, 
+    update_time, address, country, province, city
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mmbaby.user.entity.UserEntityExample" >
     select
@@ -112,14 +113,14 @@
   <insert id="insert" parameterType="com.mmbaby.user.entity.UserEntity" >
     insert into user (id, user_name, mobile, 
       head_picture, password, sex, 
-      validity, register_time, update_time, 
-      address, country, province, 
-      city)
+      role, validity, register_time, 
+      update_time, address, country, 
+      province, city)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
       #{headPicture,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
-      #{validity,jdbcType=TINYINT}, #{registerTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{address,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, #{province,jdbcType=INTEGER}, 
-      #{city,jdbcType=INTEGER})
+      #{role,jdbcType=INTEGER}, #{validity,jdbcType=TINYINT}, #{registerTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
+      #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.mmbaby.user.entity.UserEntity" >
     insert into user
@@ -141,6 +142,9 @@
       </if>
       <if test="sex != null" >
         sex,
+      </if>
+      <if test="role != null" >
+        role,
       </if>
       <if test="validity != null" >
         validity,
@@ -182,6 +186,9 @@
       </if>
       <if test="sex != null" >
         #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="role != null" >
+        #{role,jdbcType=INTEGER},
       </if>
       <if test="validity != null" >
         #{validity,jdbcType=TINYINT},
@@ -233,6 +240,9 @@
       <if test="record.sex != null" >
         sex = #{record.sex,jdbcType=INTEGER},
       </if>
+      <if test="record.role != null" >
+        role = #{record.role,jdbcType=INTEGER},
+      </if>
       <if test="record.validity != null" >
         validity = #{record.validity,jdbcType=TINYINT},
       </if>
@@ -267,6 +277,7 @@
       head_picture = #{record.headPicture,jdbcType=VARCHAR},
       password = #{record.password,jdbcType=VARCHAR},
       sex = #{record.sex,jdbcType=INTEGER},
+      role = #{record.role,jdbcType=INTEGER},
       validity = #{record.validity,jdbcType=TINYINT},
       register_time = #{record.registerTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
@@ -295,6 +306,9 @@
       </if>
       <if test="sex != null" >
         sex = #{sex,jdbcType=INTEGER},
+      </if>
+      <if test="role != null" >
+        role = #{role,jdbcType=INTEGER},
       </if>
       <if test="validity != null" >
         validity = #{validity,jdbcType=TINYINT},
@@ -327,6 +341,7 @@
       head_picture = #{headPicture,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
       sex = #{sex,jdbcType=INTEGER},
+      role = #{role,jdbcType=INTEGER},
       validity = #{validity,jdbcType=TINYINT},
       register_time = #{registerTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
