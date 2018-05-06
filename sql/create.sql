@@ -1,24 +1,27 @@
 #用户表(管理员)
-DROP TABLE `user`;
+DROP TABLE if exists `user`;
 CREATE TABLE `user` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `user_name` varchar(50) NOT NULL DEFAULT '' COMMENT '管理员姓名',
   `mobile` varchar(11) NOT NULL DEFAULT '' COMMENT '手机号',
   `head_picture` varchar(128) NOT NULL DEFAULT '' COMMENT '用户头像',
   `password` VARCHAR (60) NOT NULL COMMENT '用户密码(md5加密)',
-  `sex` tinyint(1) unsigned NOT NULL DEFAULT '0' COMMENT '性别: 0 男;1 女',
+  `sex` int(2) unsigned NOT NULL DEFAULT '10' COMMENT '性别: 10-男;20-女',
+  `role` int(2) unsigned NOT NULL DEFAULT '0' COMMENT '角色: 0-普通的管理员(没有修改权限), 10-超级管理员, 20-商品管理员, 30-资讯管理员',
   `validity` tinyint(1) unsigned NOT NULL DEFAULT '1' COMMENT '是否有效, 0-无效,1-有效',
   `register_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '注册时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '信息更新时间',
   `address` varchar(128) not null DEFAULT '' COMMENT '地址',
-  `country` tinyint(2) not null DEFAULT '1' COMMENT '国家',
-  `province` tinyint(2) not null DEFAULT '1' COMMENT '省份',
-  `city` tinyint(2) not null DEFAULT '1' COMMENT '城市',
-  primary key (`id`)
+  `country` int(2) unsigned not null DEFAULT '1' COMMENT '国家',
+  `province` int(2) unsigned not null DEFAULT '1' COMMENT '省份',
+  `city` int(2) unsigned not null DEFAULT '1' COMMENT '城市',
+  primary key (`id`),
+  KEY `idx_username` (`user_name`),
+  KEY `idx_user_mobile` (`mobile`)
 ) ENGINE=InnoDB AUTO_INCREMENT= 1 DEFAULT CHARSET=utf8 COMMENT='内部管理员表';
 
 #客户表(会员)
-DROP TABLE `customer`;
+DROP TABLE if exists `customer`;
 CREATE TABLE `customer` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '用户ID',
   `customer_name` varchar(50) NOT NULL DEFAULT '' COMMENT '客户姓名',
@@ -41,8 +44,7 @@ CREATE TABLE `customer` (
   `city` tinyint(2) not null DEFAULT '1' COMMENT '城市',
   PRIMARY KEY (`id`),
   KEY `idx_customername` (`customer_name`),
-  KEY `idx_mobile` (`mobile`),
-  KEY `idx_email` (`email`)
+  KEY `idx_mobile` (`mobile`)
 ) ENGINE=InnoDB AUTO_INCREMENT = 10000 DEFAULT CHARSET=utf8 COMMENT='用户表';
 
 #商品表
@@ -52,6 +54,10 @@ CREATE TABLE `product` (
   `shop_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '卖家编号',
   `inventory` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '库存',
   `price` double(10, 2) NOT NULL DEFAULT '0.00' COMMENT'单价',
+  `discount_price` double(10, 2) NOT NULL DEFAULT '0.00' COMMENT'打折价',
+  `discount` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT '是否打折: 0-否，1-是',
+  `sales` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '销量',
+  `pic` varchar(120) NOT NULL DEFAULT '' COMMENT '商品图片',
   `price_region` tinyint(3) unsigned NOT NULL DEFAULT '10' COMMENT '商品价格区间, 0-60 : 10, 61-100 : 20, 101-200 : 30, 201-400 : 40, 401-1000 : 50, 1000- : 60',
   `type` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '商品大类型 1-婴儿, 2-妈妈',
   `sex` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '商品适用的性别, 1-女, 2-男',
@@ -66,7 +72,7 @@ CREATE TABLE `product` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='商品表';
 
 #商家表
-DROP TABLE `shop`;
+DROP TABLE if exists `shop`;
 CREATE TABLE `shop` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '商家ID',
   `name` varchar(60) NOT NULL DEFAULT '怪蜀黍母婴' COMMENT '商家名称',
@@ -82,13 +88,14 @@ CREATE TABLE `shop` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='商家表';
 
 #订单表
-DROP TABLE `order`;
+DROP TABLE if exists `order`;
 CREATE TABLE `order` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '订单id',
   `customer_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '客户ID',
   `amount` double(12, 2) NOT NULL DEFAULT '0.00' COMMENT '订单总额',
   `number` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '订单商品总数',
   `freight` double(8, 2) NOT NULL DEFAULT '0.00' COMMENT '运费',
+  `status` int(3) unsigned NOT NULL DEFAULT '10' COMMENT '订单状态: 10-待支付,20-待收货,30-待评价,40-完成,100-取消',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
@@ -98,10 +105,11 @@ CREATE TABLE `order` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 #订单项表
-DROP TABLE `order_line`;
+DROP TABLE if exists `order_line`;
 CREATE TABLE `order_line` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '订单项id',
   `item_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '商品id',
+  `order_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '订单id',
   `amount` double(12, 2) NOT NULL DEFAULT '0.00' COMMENT '订单项总额',
   `number` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '订单项商品总数',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
@@ -113,7 +121,7 @@ CREATE TABLE `order_line` (
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='订单表';
 
 #地区表
-DROP TABLE `region`;
+DROP TABLE if exists `region`;
 CREATE TABLE `region` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '地区id',
   `country` int(10) unsigned NOT NULL DEFAULT '1' COMMENT '国家id',
@@ -128,7 +136,7 @@ CREATE TABLE `region` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='地区表';
 
 #评论表
-DROP TABLE `comment`;
+DROP TABLE if exists `comment`;
 CREATE TABLE `comment` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '评论id',
   `customer_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '相关的客户id',
@@ -144,7 +152,7 @@ CREATE TABLE `comment` (
 ) ENGINE=InnoDB AUTO_INCREMENT=1000 DEFAULT CHARSET=utf8 COMMENT='评论表';
 
 #资讯表
-DROP TABLE `information`;
+DROP TABLE if exists `information`;
 CREATE TABLE `information` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '资讯id',
   `content` varchar(250) NOT NULL DEFAULT '' COMMENT '咨询内容',
