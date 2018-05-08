@@ -4,6 +4,7 @@ package com.mmbaby.base.entity;
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/8 at 9:54
  */
+
 public class PageBean<T> {
 
     //必须填写的数字
