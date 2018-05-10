@@ -1,25 +1,19 @@
-package com.mmbaby.order.entity;
+package com.mmbaby.address.entity;
 
 import java.util.Date;
 
-public class OrderEntity {
+public class AddressEntity {
     private Integer id;
 
     private Integer customerId;
 
-    private Double amount;
+    private String receiveName;
 
-    private Integer number;
+    private String mobile;
 
-    private Double freight;
+    private String zip;
 
-    private String leaveMessage;
-
-    private Integer logistics;
-
-    private Integer addressId;
-
-    private Integer status;
+    private Boolean defaultAddress;
 
     private Date createTime;
 
@@ -47,60 +41,36 @@ public class OrderEntity {
         this.customerId = customerId;
     }
 
-    public Double getAmount() {
-        return amount;
+    public String getReceiveName() {
+        return receiveName;
     }
 
-    public void setAmount(Double amount) {
-        this.amount = amount;
+    public void setReceiveName(String receiveName) {
+        this.receiveName = receiveName == null ? null : receiveName.trim();
     }
 
-    public Integer getNumber() {
-        return number;
+    public String getMobile() {
+        return mobile;
     }
 
-    public void setNumber(Integer number) {
-        this.number = number;
+    public void setMobile(String mobile) {
+        this.mobile = mobile == null ? null : mobile.trim();
     }
 
-    public Double getFreight() {
-        return freight;
+    public String getZip() {
+        return zip;
     }
 
-    public void setFreight(Double freight) {
-        this.freight = freight;
+    public void setZip(String zip) {
+        this.zip = zip == null ? null : zip.trim();
     }
 
-    public String getLeaveMessage() {
-        return leaveMessage;
+    public Boolean getDefaultAddress() {
+        return defaultAddress;
     }
 
-    public void setLeaveMessage(String leaveMessage) {
-        this.leaveMessage = leaveMessage == null ? null : leaveMessage.trim();
-    }
-
-    public Integer getLogistics() {
-        return logistics;
-    }
-
-    public void setLogistics(Integer logistics) {
-        this.logistics = logistics;
-    }
-
-    public Integer getAddressId() {
-        return addressId;
-    }
-
-    public void setAddressId(Integer addressId) {
-        this.addressId = addressId;
-    }
-
-    public Integer getStatus() {
-        return status;
-    }
-
-    public void setStatus(Integer status) {
-        this.status = status;
+    public void setDefaultAddress(Boolean defaultAddress) {
+        this.defaultAddress = defaultAddress;
     }
 
     public Date getCreateTime() {

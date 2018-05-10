@@ -95,6 +95,9 @@ CREATE TABLE `order` (
   `amount` double(12, 2) NOT NULL DEFAULT '0.00' COMMENT '订单总额',
   `number` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '订单商品总数',
   `freight` double(8, 2) NOT NULL DEFAULT '0.00' COMMENT '运费',
+  `leave_message` varchar(60) NOT NULL DEFAULT '' COMMENT '买家留言',
+  `logistics` int(10) unsigned NOT NULL DEFAULT '10' COMMENT '物流, 10-顺丰速递，20-EMS速递，30-德邦快运，40-任意物流',
+  `address_id` int(10) unsigned NOT NULL DEFAULT '1000' COMMENT '收货地址id',
   `status` int(3) unsigned NOT NULL DEFAULT '10' COMMENT '订单状态: 10-待支付,20-待收货,30-待评价,40-完成,100-取消',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
@@ -103,6 +106,23 @@ CREATE TABLE `order` (
   `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效',
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='订单表';
+
+#收货地址表
+DROP TABLE if exists `address`;
+CREATE TABLE `address` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '地址id',
+  `customer_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '客户ID',
+  `receive_name` varchar(40) NOT NULL DEFAULT '' COMMENT '收货人姓名',
+  `mobile` varchar(11) NOT NULL DEFAULT '' COMMENT '联系手机',
+  `zip` varchar(6) NOT NULL DEFAULT '' COMMENT '邮编',
+  `default_address` tinyint(3) unsigned NOT NULL DEFAULT '0' COMMENT ' 是否默认地址.1-默认 0-不默认',
+  `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
+  `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
+  `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
+  `update_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '修改人',
+  `validity` tinyint(3) unsigned NOT NULL DEFAULT '1' COMMENT '有效性 1.有效 0. 无效',
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=10000 DEFAULT CHARSET=utf8 COMMENT='收货地址表';
 
 #订单项表
 DROP TABLE if exists `order_line`;
