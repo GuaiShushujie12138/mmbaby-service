@@ -1,8 +1,18 @@
-package com.mmbaby.product.entity;
+package com.mmbaby.product.dto.domain;
 
+import com.google.common.base.MoreObjects;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class ProductEntity {
+/**
+ * @author Wanghui Fu
+ * Created by Guaishushu on 2018/5/11 at 11:22
+ */
+public class ProductDTO implements Serializable {
+
+    private static final long serialVersionUID = 432037946429034017L;
+
     private Integer id;
 
     private Long shopId;
@@ -120,7 +130,7 @@ public class ProductEntity {
     }
 
     public void setPic(String pic) {
-        this.pic = pic == null ? null : pic.trim();
+        this.pic = pic;
     }
 
     public Integer getPriceRegion() {
@@ -184,7 +194,7 @@ public class ProductEntity {
     }
 
     public void setCreateId(String createId) {
-        this.createId = createId == null ? null : createId.trim();
+        this.createId = createId;
     }
 
     public String getUpdateId() {
@@ -192,7 +202,7 @@ public class ProductEntity {
     }
 
     public void setUpdateId(String updateId) {
-        this.updateId = updateId == null ? null : updateId.trim();
+        this.updateId = updateId;
     }
 
     public Boolean getValidity() {
@@ -201,5 +211,31 @@ public class ProductEntity {
 
     public void setValidity(Boolean validity) {
         this.validity = validity;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("shopId", shopId)
+                .add("inventory", inventory)
+                .add("price", price)
+                .add("discountPrice", discountPrice)
+                .add("discount", discount)
+                .add("hot", hot)
+                .add("recommend", recommend)
+                .add("sales", sales)
+                .add("pic", pic)
+                .add("priceRegion", priceRegion)
+                .add("type", type)
+                .add("sex", sex)
+                .add("ageRegion", ageRegion)
+                .add("category", category)
+                .add("createTime", createTime)
+                .add("updateTime", updateTime)
+                .add("createId", createId)
+                .add("updateId", updateId)
+                .add("validity", validity)
+                .toString();
     }
 }

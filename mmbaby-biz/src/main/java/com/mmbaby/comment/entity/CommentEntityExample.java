@@ -365,52 +365,52 @@ public class CommentEntityExample {
             return (Criteria) this;
         }
 
-        public Criteria andStarEqualTo(Byte value) {
+        public Criteria andStarEqualTo(Integer value) {
             addCriterion("star =", value, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarNotEqualTo(Byte value) {
+        public Criteria andStarNotEqualTo(Integer value) {
             addCriterion("star <>", value, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarGreaterThan(Byte value) {
+        public Criteria andStarGreaterThan(Integer value) {
             addCriterion("star >", value, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarGreaterThanOrEqualTo(Byte value) {
+        public Criteria andStarGreaterThanOrEqualTo(Integer value) {
             addCriterion("star >=", value, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarLessThan(Byte value) {
+        public Criteria andStarLessThan(Integer value) {
             addCriterion("star <", value, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarLessThanOrEqualTo(Byte value) {
+        public Criteria andStarLessThanOrEqualTo(Integer value) {
             addCriterion("star <=", value, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarIn(List<Byte> values) {
+        public Criteria andStarIn(List<Integer> values) {
             addCriterion("star in", values, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarNotIn(List<Byte> values) {
+        public Criteria andStarNotIn(List<Integer> values) {
             addCriterion("star not in", values, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarBetween(Byte value1, Byte value2) {
+        public Criteria andStarBetween(Integer value1, Integer value2) {
             addCriterion("star between", value1, value2, "star");
             return (Criteria) this;
         }
 
-        public Criteria andStarNotBetween(Byte value1, Byte value2) {
+        public Criteria andStarNotBetween(Integer value1, Integer value2) {
             addCriterion("star not between", value1, value2, "star");
             return (Criteria) this;
         }

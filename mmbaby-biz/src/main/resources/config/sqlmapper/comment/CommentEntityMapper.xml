@@ -6,7 +6,7 @@
     <result column="customer_id" property="customerId" jdbcType="INTEGER" />
     <result column="item_id" property="itemId" jdbcType="INTEGER" />
     <result column="content" property="content" jdbcType="VARCHAR" />
-    <result column="star" property="star" jdbcType="TINYINT" />
+    <result column="star" property="star" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_id" property="createId" jdbcType="VARCHAR" />
@@ -112,7 +112,7 @@
       update_time, create_id, update_id, 
       validity)
     values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, 
-      #{content,jdbcType=VARCHAR}, #{star,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{content,jdbcType=VARCHAR}, #{star,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, 
       #{updateTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR}, 
       #{validity,jdbcType=TINYINT})
   </insert>
@@ -164,7 +164,7 @@
         #{content,jdbcType=VARCHAR},
       </if>
       <if test="star != null" >
-        #{star,jdbcType=TINYINT},
+        #{star,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
         #{createTime,jdbcType=TIMESTAMP},
@@ -205,7 +205,7 @@
         content = #{record.content,jdbcType=VARCHAR},
       </if>
       <if test="record.star != null" >
-        star = #{record.star,jdbcType=TINYINT},
+        star = #{record.star,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -233,7 +233,7 @@
       customer_id = #{record.customerId,jdbcType=INTEGER},
       item_id = #{record.itemId,jdbcType=INTEGER},
       content = #{record.content,jdbcType=VARCHAR},
-      star = #{record.star,jdbcType=TINYINT},
+      star = #{record.star,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_id = #{record.createId,jdbcType=VARCHAR},
@@ -256,7 +256,7 @@
         content = #{content,jdbcType=VARCHAR},
       </if>
       <if test="star != null" >
-        star = #{star,jdbcType=TINYINT},
+        star = #{star,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -281,7 +281,7 @@
     set customer_id = #{customerId,jdbcType=INTEGER},
       item_id = #{itemId,jdbcType=INTEGER},
       content = #{content,jdbcType=VARCHAR},
-      star = #{star,jdbcType=TINYINT},
+      star = #{star,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_id = #{createId,jdbcType=VARCHAR},

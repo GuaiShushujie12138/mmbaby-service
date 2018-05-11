@@ -1,17 +1,21 @@
-package com.mmbaby.comment.entity;
+package com.mmbaby.information.dto.domain;
 
+import com.google.common.base.MoreObjects;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class CommentEntity {
+/**
+ * @author Wanghui Fu
+ * Created by Guaishushu on 2018/5/11 at 10:39
+ */
+public class InformationDTO implements Serializable {
+
+    private static final long serialVersionUID = 585236723555134017L;
+
     private Integer id;
 
-    private Integer customerId;
-
-    private Integer itemId;
-
     private String content;
-
-    private Integer star;
 
     private Date createTime;
 
@@ -31,36 +35,12 @@ public class CommentEntity {
         this.id = id;
     }
 
-    public Integer getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(Integer customerId) {
-        this.customerId = customerId;
-    }
-
-    public Integer getItemId() {
-        return itemId;
-    }
-
-    public void setItemId(Integer itemId) {
-        this.itemId = itemId;
-    }
-
     public String getContent() {
         return content;
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
-    }
-
-    public Integer getStar() {
-        return star;
-    }
-
-    public void setStar(Integer star) {
-        this.star = star;
+        this.content = content;
     }
 
     public Date getCreateTime() {
@@ -84,7 +64,7 @@ public class CommentEntity {
     }
 
     public void setCreateId(String createId) {
-        this.createId = createId == null ? null : createId.trim();
+        this.createId = createId;
     }
 
     public String getUpdateId() {
@@ -92,7 +72,7 @@ public class CommentEntity {
     }
 
     public void setUpdateId(String updateId) {
-        this.updateId = updateId == null ? null : updateId.trim();
+        this.updateId = updateId;
     }
 
     public Boolean getValidity() {
@@ -101,5 +81,18 @@ public class CommentEntity {
 
     public void setValidity(Boolean validity) {
         this.validity = validity;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("content", content)
+                .add("createTime", createTime)
+                .add("updateTime", updateTime)
+                .add("createId", createId)
+                .add("updateId", updateId)
+                .add("validity", validity)
+                .toString();
     }
 }

@@ -10,8 +10,10 @@
     <result column="sex" property="sex" jdbcType="INTEGER" />
     <result column="role" property="role" jdbcType="INTEGER" />
     <result column="validity" property="validity" jdbcType="TINYINT" />
-    <result column="register_time" property="registerTime" jdbcType="TIMESTAMP" />
+    <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="create_id" property="createId" jdbcType="VARCHAR" />
+    <result column="update_id" property="updateId" jdbcType="VARCHAR" />
     <result column="address" property="address" jdbcType="VARCHAR" />
     <result column="country" property="country" jdbcType="INTEGER" />
     <result column="province" property="province" jdbcType="INTEGER" />
@@ -76,8 +78,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, user_name, mobile, head_picture, password, sex, role, validity, register_time, 
-    update_time, address, country, province, city
+    id, user_name, mobile, head_picture, password, sex, role, validity, create_time, 
+    update_time, create_id, update_id, address, country, province, city
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mmbaby.user.entity.UserEntityExample" >
     select
@@ -113,14 +115,16 @@
   <insert id="insert" parameterType="com.mmbaby.user.entity.UserEntity" >
     insert into user (id, user_name, mobile, 
       head_picture, password, sex, 
-      role, validity, register_time, 
-      update_time, address, country, 
-      province, city)
+      role, validity, create_time, 
+      update_time, create_id, update_id, 
+      address, country, province, 
+      city)
     values (#{id,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, 
       #{headPicture,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, #{sex,jdbcType=INTEGER}, 
-      #{role,jdbcType=INTEGER}, #{validity,jdbcType=TINYINT}, #{registerTime,jdbcType=TIMESTAMP}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{address,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, 
-      #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER})
+      #{role,jdbcType=INTEGER}, #{validity,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR}, 
+      #{address,jdbcType=VARCHAR}, #{country,jdbcType=INTEGER}, #{province,jdbcType=INTEGER}, 
+      #{city,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.mmbaby.user.entity.UserEntity" >
     insert into user
@@ -149,11 +153,17 @@
       <if test="validity != null" >
         validity,
       </if>
-      <if test="registerTime != null" >
-        register_time,
+      <if test="createTime != null" >
+        create_time,
       </if>
       <if test="updateTime != null" >
         update_time,
+      </if>
+      <if test="createId != null" >
+        create_id,
+      </if>
+      <if test="updateId != null" >
+        update_id,
       </if>
       <if test="address != null" >
         address,
@@ -193,11 +203,17 @@
       <if test="validity != null" >
         #{validity,jdbcType=TINYINT},
       </if>
-      <if test="registerTime != null" >
-        #{registerTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null" >
+        #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null" >
+        #{updateId,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         #{address,jdbcType=VARCHAR},
@@ -246,11 +262,17 @@
       <if test="record.validity != null" >
         validity = #{record.validity,jdbcType=TINYINT},
       </if>
-      <if test="record.registerTime != null" >
-        register_time = #{record.registerTime,jdbcType=TIMESTAMP},
+      <if test="record.createTime != null" >
+        create_time = #{record.createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updateTime != null" >
         update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="record.createId != null" >
+        create_id = #{record.createId,jdbcType=VARCHAR},
+      </if>
+      <if test="record.updateId != null" >
+        update_id = #{record.updateId,jdbcType=VARCHAR},
       </if>
       <if test="record.address != null" >
         address = #{record.address,jdbcType=VARCHAR},
@@ -279,8 +301,10 @@
       sex = #{record.sex,jdbcType=INTEGER},
       role = #{record.role,jdbcType=INTEGER},
       validity = #{record.validity,jdbcType=TINYINT},
-      register_time = #{record.registerTime,jdbcType=TIMESTAMP},
+      create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      create_id = #{record.createId,jdbcType=VARCHAR},
+      update_id = #{record.updateId,jdbcType=VARCHAR},
       address = #{record.address,jdbcType=VARCHAR},
       country = #{record.country,jdbcType=INTEGER},
       province = #{record.province,jdbcType=INTEGER},
@@ -313,11 +337,17 @@
       <if test="validity != null" >
         validity = #{validity,jdbcType=TINYINT},
       </if>
-      <if test="registerTime != null" >
-        register_time = #{registerTime,jdbcType=TIMESTAMP},
+      <if test="createTime != null" >
+        create_time = #{createTime,jdbcType=TIMESTAMP},
       </if>
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="createId != null" >
+        create_id = #{createId,jdbcType=VARCHAR},
+      </if>
+      <if test="updateId != null" >
+        update_id = #{updateId,jdbcType=VARCHAR},
       </if>
       <if test="address != null" >
         address = #{address,jdbcType=VARCHAR},
@@ -343,8 +373,10 @@
       sex = #{sex,jdbcType=INTEGER},
       role = #{role,jdbcType=INTEGER},
       validity = #{validity,jdbcType=TINYINT},
-      register_time = #{registerTime,jdbcType=TIMESTAMP},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
+      create_id = #{createId,jdbcType=VARCHAR},
+      update_id = #{updateId,jdbcType=VARCHAR},
       address = #{address,jdbcType=VARCHAR},
       country = #{country,jdbcType=INTEGER},
       province = #{province,jdbcType=INTEGER},

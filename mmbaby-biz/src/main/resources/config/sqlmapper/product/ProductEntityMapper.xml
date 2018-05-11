@@ -8,6 +8,8 @@
     <result column="price" property="price" jdbcType="DOUBLE" />
     <result column="discount_price" property="discountPrice" jdbcType="DOUBLE" />
     <result column="discount" property="discount" jdbcType="INTEGER" />
+    <result column="hot" property="hot" jdbcType="TINYINT" />
+    <result column="recommend" property="recommend" jdbcType="TINYINT" />
     <result column="sales" property="sales" jdbcType="INTEGER" />
     <result column="pic" property="pic" jdbcType="VARCHAR" />
     <result column="price_region" property="priceRegion" jdbcType="INTEGER" />
@@ -80,9 +82,9 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, shop_id, inventory, price, discount_price, discount, sales, pic, price_region, 
-    type, sex, age_region, category, create_time, update_time, create_id, update_id, 
-    validity
+    id, shop_id, inventory, price, discount_price, discount, hot, recommend, sales, pic, 
+    price_region, type, sex, age_region, category, create_time, update_time, create_id, 
+    update_id, validity
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mmbaby.product.entity.ProductEntityExample" >
     select
@@ -118,18 +120,18 @@
   <insert id="insert" parameterType="com.mmbaby.product.entity.ProductEntity" >
     insert into product (id, shop_id, inventory, 
       price, discount_price, discount, 
-      sales, pic, price_region, 
-      type, sex, age_region, 
-      category, create_time, update_time, 
-      create_id, update_id, validity
-      )
+      hot, recommend, sales, 
+      pic, price_region, type, 
+      sex, age_region, category, 
+      create_time, update_time, create_id, 
+      update_id, validity)
     values (#{id,jdbcType=INTEGER}, #{shopId,jdbcType=BIGINT}, #{inventory,jdbcType=INTEGER}, 
       #{price,jdbcType=DOUBLE}, #{discountPrice,jdbcType=DOUBLE}, #{discount,jdbcType=INTEGER}, 
-      #{sales,jdbcType=INTEGER}, #{pic,jdbcType=VARCHAR}, #{priceRegion,jdbcType=INTEGER}, 
-      #{type,jdbcType=INTEGER}, #{sex,jdbcType=INTEGER}, #{ageRegion,jdbcType=INTEGER}, 
-      #{category,jdbcType=INTEGER}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
-      #{createId,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT}
-      )
+      #{hot,jdbcType=TINYINT}, #{recommend,jdbcType=TINYINT}, #{sales,jdbcType=INTEGER}, 
+      #{pic,jdbcType=VARCHAR}, #{priceRegion,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
+      #{sex,jdbcType=INTEGER}, #{ageRegion,jdbcType=INTEGER}, #{category,jdbcType=INTEGER}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, 
+      #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.mmbaby.product.entity.ProductEntity" >
     insert into product
@@ -151,6 +153,12 @@
       </if>
       <if test="discount != null" >
         discount,
+      </if>
+      <if test="hot != null" >
+        hot,
+      </if>
+      <if test="recommend != null" >
+        recommend,
       </if>
       <if test="sales != null" >
         sales,
@@ -207,6 +215,12 @@
       </if>
       <if test="discount != null" >
         #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="hot != null" >
+        #{hot,jdbcType=TINYINT},
+      </if>
+      <if test="recommend != null" >
+        #{recommend,jdbcType=TINYINT},
       </if>
       <if test="sales != null" >
         #{sales,jdbcType=INTEGER},
@@ -273,6 +287,12 @@
       <if test="record.discount != null" >
         discount = #{record.discount,jdbcType=INTEGER},
       </if>
+      <if test="record.hot != null" >
+        hot = #{record.hot,jdbcType=TINYINT},
+      </if>
+      <if test="record.recommend != null" >
+        recommend = #{record.recommend,jdbcType=TINYINT},
+      </if>
       <if test="record.sales != null" >
         sales = #{record.sales,jdbcType=INTEGER},
       </if>
@@ -322,6 +342,8 @@
       price = #{record.price,jdbcType=DOUBLE},
       discount_price = #{record.discountPrice,jdbcType=DOUBLE},
       discount = #{record.discount,jdbcType=INTEGER},
+      hot = #{record.hot,jdbcType=TINYINT},
+      recommend = #{record.recommend,jdbcType=TINYINT},
       sales = #{record.sales,jdbcType=INTEGER},
       pic = #{record.pic,jdbcType=VARCHAR},
       price_region = #{record.priceRegion,jdbcType=INTEGER},
@@ -355,6 +377,12 @@
       </if>
       <if test="discount != null" >
         discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="hot != null" >
+        hot = #{hot,jdbcType=TINYINT},
+      </if>
+      <if test="recommend != null" >
+        recommend = #{recommend,jdbcType=TINYINT},
       </if>
       <if test="sales != null" >
         sales = #{sales,jdbcType=INTEGER},
@@ -402,6 +430,8 @@
       price = #{price,jdbcType=DOUBLE},
       discount_price = #{discountPrice,jdbcType=DOUBLE},
       discount = #{discount,jdbcType=INTEGER},
+      hot = #{hot,jdbcType=TINYINT},
+      recommend = #{recommend,jdbcType=TINYINT},
       sales = #{sales,jdbcType=INTEGER},
       pic = #{pic,jdbcType=VARCHAR},
       price_region = #{priceRegion,jdbcType=INTEGER},

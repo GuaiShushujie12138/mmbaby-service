@@ -1,8 +1,18 @@
-package com.mmbaby.user.entity;
+package com.mmbaby.user.dto.domain;
 
+import com.google.common.base.MoreObjects;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class UserEntity {
+/**
+ * @author Wanghui Fu
+ * Created by Guaishushu on 2018/5/11 at 11:42
+ */
+public class UserDTO implements Serializable {
+
+    private static final long serialVersionUID = 432037946333904017L;
+
     private Integer id;
 
     private String userName;
@@ -48,7 +58,7 @@ public class UserEntity {
     }
 
     public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
+        this.userName = userName;
     }
 
     public String getMobile() {
@@ -56,7 +66,7 @@ public class UserEntity {
     }
 
     public void setMobile(String mobile) {
-        this.mobile = mobile == null ? null : mobile.trim();
+        this.mobile = mobile;
     }
 
     public String getHeadPicture() {
@@ -64,7 +74,7 @@ public class UserEntity {
     }
 
     public void setHeadPicture(String headPicture) {
-        this.headPicture = headPicture == null ? null : headPicture.trim();
+        this.headPicture = headPicture;
     }
 
     public String getPassword() {
@@ -72,7 +82,7 @@ public class UserEntity {
     }
 
     public void setPassword(String password) {
-        this.password = password == null ? null : password.trim();
+        this.password = password;
     }
 
     public Integer getSex() {
@@ -120,7 +130,7 @@ public class UserEntity {
     }
 
     public void setCreateId(String createId) {
-        this.createId = createId == null ? null : createId.trim();
+        this.createId = createId;
     }
 
     public String getUpdateId() {
@@ -128,7 +138,7 @@ public class UserEntity {
     }
 
     public void setUpdateId(String updateId) {
-        this.updateId = updateId == null ? null : updateId.trim();
+        this.updateId = updateId;
     }
 
     public String getAddress() {
@@ -136,7 +146,7 @@ public class UserEntity {
     }
 
     public void setAddress(String address) {
-        this.address = address == null ? null : address.trim();
+        this.address = address;
     }
 
     public Integer getCountry() {
@@ -161,5 +171,27 @@ public class UserEntity {
 
     public void setCity(Integer city) {
         this.city = city;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("userName", userName)
+                .add("mobile", mobile)
+                .add("headPicture", headPicture)
+                .add("password", password)
+                .add("sex", sex)
+                .add("role", role)
+                .add("address", address)
+                .add("country", country)
+                .add("province", province)
+                .add("city", city)
+                .add("createTime", createTime)
+                .add("updateTime", updateTime)
+                .add("createId", createId)
+                .add("updateId", updateId)
+                .add("validity", validity)
+                .toString();
     }
 }

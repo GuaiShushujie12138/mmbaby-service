@@ -1,8 +1,18 @@
-package com.mmbaby.comment.entity;
+package com.mmbaby.comment.dto.domain;
 
+import com.google.common.base.MoreObjects;
+
+import java.io.Serializable;
 import java.util.Date;
 
-public class CommentEntity {
+/**
+ * @author Wanghui Fu
+ * Created by Guaishushu on 2018/5/11 at 10:11
+ */
+public class CommentDTO implements Serializable {
+
+    private static final long serialVersionUID = 585948623555134017L;
+
     private Integer id;
 
     private Integer customerId;
@@ -22,6 +32,14 @@ public class CommentEntity {
     private String updateId;
 
     private Boolean validity;
+
+    public void setStar(Integer star) {
+        this.star = star;
+    }
+
+    public Integer getStar() {
+        return star;
+    }
 
     public Integer getId() {
         return id;
@@ -52,16 +70,9 @@ public class CommentEntity {
     }
 
     public void setContent(String content) {
-        this.content = content == null ? null : content.trim();
+        this.content = content;
     }
 
-    public Integer getStar() {
-        return star;
-    }
-
-    public void setStar(Integer star) {
-        this.star = star;
-    }
 
     public Date getCreateTime() {
         return createTime;
@@ -84,7 +95,7 @@ public class CommentEntity {
     }
 
     public void setCreateId(String createId) {
-        this.createId = createId == null ? null : createId.trim();
+        this.createId = createId;
     }
 
     public String getUpdateId() {
@@ -92,7 +103,7 @@ public class CommentEntity {
     }
 
     public void setUpdateId(String updateId) {
-        this.updateId = updateId == null ? null : updateId.trim();
+        this.updateId = updateId;
     }
 
     public Boolean getValidity() {
@@ -101,5 +112,21 @@ public class CommentEntity {
 
     public void setValidity(Boolean validity) {
         this.validity = validity;
+    }
+
+    @Override
+    public String toString() {
+        return MoreObjects.toStringHelper(this)
+                .add("id", id)
+                .add("customerId", customerId)
+                .add("itemId", itemId)
+                .add("content", content)
+                .add("star", star)
+                .add("updateTime", updateTime)
+                .add("createTime", createTime)
+                .add("updateId", updateId)
+                .add("createId", createId)
+                .add("validity", validity)
+                .toString();
     }
 }

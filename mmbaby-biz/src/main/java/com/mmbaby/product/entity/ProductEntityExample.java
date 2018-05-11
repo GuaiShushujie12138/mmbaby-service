@@ -465,6 +465,126 @@ public class ProductEntityExample {
             return (Criteria) this;
         }
 
+        public Criteria andHotIsNull() {
+            addCriterion("hot is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotIsNotNull() {
+            addCriterion("hot is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotEqualTo(Boolean value) {
+            addCriterion("hot =", value, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotNotEqualTo(Boolean value) {
+            addCriterion("hot <>", value, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotGreaterThan(Boolean value) {
+            addCriterion("hot >", value, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("hot >=", value, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotLessThan(Boolean value) {
+            addCriterion("hot <", value, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotLessThanOrEqualTo(Boolean value) {
+            addCriterion("hot <=", value, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotIn(List<Boolean> values) {
+            addCriterion("hot in", values, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotNotIn(List<Boolean> values) {
+            addCriterion("hot not in", values, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotBetween(Boolean value1, Boolean value2) {
+            addCriterion("hot between", value1, value2, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andHotNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("hot not between", value1, value2, "hot");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendIsNull() {
+            addCriterion("recommend is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendIsNotNull() {
+            addCriterion("recommend is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendEqualTo(Boolean value) {
+            addCriterion("recommend =", value, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendNotEqualTo(Boolean value) {
+            addCriterion("recommend <>", value, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendGreaterThan(Boolean value) {
+            addCriterion("recommend >", value, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendGreaterThanOrEqualTo(Boolean value) {
+            addCriterion("recommend >=", value, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendLessThan(Boolean value) {
+            addCriterion("recommend <", value, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendLessThanOrEqualTo(Boolean value) {
+            addCriterion("recommend <=", value, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendIn(List<Boolean> values) {
+            addCriterion("recommend in", values, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendNotIn(List<Boolean> values) {
+            addCriterion("recommend not in", values, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendBetween(Boolean value1, Boolean value2) {
+            addCriterion("recommend between", value1, value2, "recommend");
+            return (Criteria) this;
+        }
+
+        public Criteria andRecommendNotBetween(Boolean value1, Boolean value2) {
+            addCriterion("recommend not between", value1, value2, "recommend");
+            return (Criteria) this;
+        }
+
         public Criteria andSalesIsNull() {
             addCriterion("sales is null");
             return (Criteria) this;
