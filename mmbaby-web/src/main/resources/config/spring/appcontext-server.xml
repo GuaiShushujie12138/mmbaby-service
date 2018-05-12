@@ -4,13 +4,13 @@
        xmlns:context="http://www.springframework.org/schema/context"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
 
-    <bean id="crmRpcServer" class="com.dianping.pigeon.remoting.provider.config.spring.ServiceBean" init-method="init" lazy-init="false">
+    <bean id="mmbabyRpcServer" class="com.dianping.pigeon.remoting.provider.config.spring.ServiceBean" init-method="init" lazy-init="false">
         <property name="port" value="53381"/>
         <property name="services">
             <map>
                 <!--TODO  暴露服务-->
-                <!--<entry key="http://service.lianshang.com/crm/lscrm_customer_useless_service_1.0.0" -->
-                       <!--value-ref="lscrmCustomerUselessService"/>-->
+                <entry key="http://service.mmaaby.com/customer_submit_service_1.0.0"
+                       value-ref="customerSubmitService"/>
             </map>
         </property>
     </bean>

@@ -4,7 +4,9 @@ import com.mmbaby.orderline.entity.OrderLineEntity;
 import com.mmbaby.orderline.entity.OrderLineEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface OrderLineEntityMapper {
     int countByExample(OrderLineEntityExample example);
 

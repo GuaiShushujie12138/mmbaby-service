@@ -54,4 +54,11 @@
         <maven.checkstyle.plugin.version>2.17</maven.checkstyle.plugin.version>
     </properties>
 
+    <distributionManagement>
+        <repository>
+            <id>localRepository</id>
+            <url>C:\Users\Guaishushujie\.m2\repository</url>
+        </repository>
+    </distributionManagement>
+
 </project>

@@ -9,13 +9,13 @@
     <!--</bean>-->
 
     <!--声明远程调用的服务-->
-    <bean id="crmUsersAddressService" class="com.dianping.pigeon.remoting.invoker.config.spring.ReferenceBean" init-method="init">
-        <property name="url"
-                  value="http://service.lianshang.com/uc/address_service_1.0.0"/>
-        <property name="interfaceName" value="com.lianshang.uc.api.service.UsersAddressService"/>
-        <property name="serialize" value="hessian"/>
-        <property name="callType" value="sync"/>
-        <property name="timeout" value="5000"/>
-    </bean>
+    <!--<bean id="crmUsersAddressService" class="com.dianping.pigeon.remoting.invoker.config.spring.ReferenceBean" init-method="init">-->
+        <!--<property name="url"-->
+                  <!--value="http://service.lianshang.com/uc/address_service_1.0.0"/>-->
+        <!--<property name="interfaceName" value="com.lianshang.uc.api.service.UsersAddressService"/>-->
+        <!--<property name="serialize" value="hessian"/>-->
+        <!--<property name="callType" value="sync"/>-->
+        <!--<property name="timeout" value="5000"/>-->
+    <!--</bean>-->
 
 </beans>

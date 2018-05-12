@@ -4,7 +4,9 @@ import com.mmbaby.user.entity.UserEntity;
 import com.mmbaby.user.entity.UserEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface UserEntityMapper {
     int countByExample(UserEntityExample example);
 

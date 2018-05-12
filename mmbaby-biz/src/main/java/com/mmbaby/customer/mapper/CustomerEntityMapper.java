@@ -4,7 +4,9 @@ import com.mmbaby.customer.entity.CustomerEntity;
 import com.mmbaby.customer.entity.CustomerEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface CustomerEntityMapper {
     int countByExample(CustomerEntityExample example);
 

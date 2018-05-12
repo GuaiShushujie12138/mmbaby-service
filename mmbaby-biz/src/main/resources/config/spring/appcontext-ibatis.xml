@@ -9,29 +9,28 @@
        http://www.springframework.org/schema/aop
        http://www.springframework.org/schema/aop/spring-aop.xsd">
 
-
-  <bean id="crmSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="crmDataSource"/>
-    <property name="mapperLocations" value="classpath*:config/sqlmap/crm/*.xml"/>
-    <property name="typeAliasesPackage" value="com.lianshang.crm.biz.entity"/>
+  <bean id="mmbabySqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+    <property name="dataSource" ref="mmbabyDataSource"/>
+    <property name="mapperLocations" value="classpath*:config/sqlmapper/*/*.xml"/>
+    <property name="typeAliasesPackage" value="com.mmbaby"/>
     <!--<property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/>-->
   </bean>
 
-  <bean id="sampleSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="crmDataSource"/>
-    <property name="mapperLocations" value="classpath*:config/sqlmap/sample/*.xml"/>
-    <property name="typeAliasesPackage" value="com.lianshang.crm.biz.entity"/>
-    <!--<property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/>-->
-  </bean>
+  <!--<bean id="sampleSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+    <!--<property name="dataSource" ref="crmDataSource"/>-->
+    <!--<property name="mapperLocations" value="classpath*:config/sqlmap/sample/*.xml"/>-->
+    <!--<property name="typeAliasesPackage" value="com.lianshang.crm.biz.entity"/>-->
+    <!--&lt;!&ndash;<property name="configLocation" value="classpath:config/mybatis/SqlMapConfig.xml"/>&ndash;&gt;-->
+  <!--</bean>-->
 
-  <bean id="crmDataSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
-    <property name="dataSource" ref="queryDataSource"/>
-    <property name="mapperLocations" value="classpath*:config/sqlmap/sampleData/*.xml"/>
-  </bean>
+  <!--<bean id="crmDataSqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">-->
+    <!--<property name="dataSource" ref="queryDataSource"/>-->
+    <!--<property name="mapperLocations" value="classpath*:config/sqlmap/sampleData/*.xml"/>-->
+  <!--</bean>-->
 
 
   <aop:config>
-    <aop:pointcut id="appService" expression="execution(* com.lianshang.crm.biz.service..*Service*.*(..))"/>
+    <aop:pointcut id="appService" expression="execution(* com.mmbaby..*Service*.*(..))"/>
     <aop:advisor advice-ref="txAdvice" pointcut-ref="appService"/>
   </aop:config>
 
@@ -47,7 +46,7 @@
   </tx:advice>
 
   <bean id="transactionManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-    <property name="dataSource" ref="crmDataSource"/>
+    <property name="dataSource" ref="mmbabyDataSource"/>
   </bean>
 
 </beans>

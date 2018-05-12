@@ -21,4 +21,10 @@
         </dependency>
     </dependencies>
 
+    <distributionManagement>
+        <repository>
+            <id>localRepository</id>
+            <url>C:\Users\Guaishushujie\.m2\repository</url>
+        </repository>
+    </distributionManagement>
 </project>

@@ -4,7 +4,9 @@ import com.mmbaby.information.entity.InformationEntity;
 import com.mmbaby.information.entity.InformationEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface InformationEntityMapper {
     int countByExample(InformationEntityExample example);
 

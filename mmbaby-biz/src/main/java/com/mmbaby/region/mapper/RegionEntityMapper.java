@@ -4,7 +4,9 @@ import com.mmbaby.region.entity.RegionEntity;
 import com.mmbaby.region.entity.RegionEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface RegionEntityMapper {
     int countByExample(RegionEntityExample example);
 

@@ -4,7 +4,9 @@ import com.mmbaby.shop.entity.ShopEntity;
 import com.mmbaby.shop.entity.ShopEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
+import org.springframework.stereotype.Repository;
 
+@Repository
 public interface ShopEntityMapper {
     int countByExample(ShopEntityExample example);
 
