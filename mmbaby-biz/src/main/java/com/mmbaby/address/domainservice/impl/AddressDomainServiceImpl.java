@@ -1,12 +1,16 @@
 package com.mmbaby.address.domainservice.impl;
 
+import com.google.common.collect.Lists;
 import com.mmbaby.address.domainservice.IAddressDomainService;
 import com.mmbaby.address.dto.domain.AddressDTO;
 import com.mmbaby.address.entity.AddressEntity;
+import com.mmbaby.address.entity.AddressEntityExample;
 import com.mmbaby.address.mapper.AddressEntityMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Wanghui Fu
@@ -41,6 +45,26 @@ public class AddressDomainServiceImpl implements IAddressDomainService {
         }
 
         return entity2Dto(addressEntity);
+    }
+
+    /**
+     * 根据客户id查询出所有的收货地址
+     *
+     * @param customerId
+     * @return
+     */
+    @Override
+    public List<AddressDTO> queryAddressListByCustomerId(Integer customerId) {
+        List<AddressDTO> addressList = Lists.newArrayList();
+
+        AddressEntityExample example = new AddressEntityExample();
+        AddressEntityExample.Criteria criteria = example.createCriteria();
+
+        criteria.andCustomerIdEqualTo(customerId);
+
+        List<AddressEntity> addressEntityList = addressEntityMapper.selectByExample(example);
+
+        return entity2Dto(addressEntityList);
     }
 
     private AddressDTO entity2Dto(AddressEntity entity) {
@@ -81,5 +105,15 @@ public class AddressDomainServiceImpl implements IAddressDomainService {
         }
         BeanUtils.copyProperties(dto, entity);
         return entity;
+    }
+
+    private List<AddressDTO> entity2Dto(List<AddressEntity> addressEntityList) {
+        List<AddressDTO> addressList = Lists.newArrayList();
+
+        for (AddressEntity addressEntity : addressEntityList) {
+            addressList.add(entity2Dto(addressEntity));
+        }
+
+        return addressList;
     }
 }

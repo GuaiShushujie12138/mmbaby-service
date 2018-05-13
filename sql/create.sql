@@ -116,6 +116,10 @@ DROP TABLE if exists `address`;
 CREATE TABLE `address` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '地址id',
   `customer_id` int(10) unsigned NOT NULL DEFAULT '10000' COMMENT '客户ID',
+  `address` varchar(80) NOT NULL DEFAULT '' COMMENT '收货地址',
+  `country` int(2) unsigned not null DEFAULT '1' COMMENT '国家',
+  `province` int(2) unsigned not null DEFAULT '1' COMMENT '省份',
+  `city` int(2) unsigned not null DEFAULT '1' COMMENT '城市',
   `receive_name` varchar(40) NOT NULL DEFAULT '' COMMENT '收货人姓名',
   `mobile` varchar(11) NOT NULL DEFAULT '' COMMENT '联系手机',
   `zip` varchar(6) NOT NULL DEFAULT '' COMMENT '邮编',

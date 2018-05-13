@@ -4,9 +4,7 @@ import com.mmbaby.address.entity.AddressEntity;
 import com.mmbaby.address.entity.AddressEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface AddressEntityMapper {
     int countByExample(AddressEntityExample example);
 

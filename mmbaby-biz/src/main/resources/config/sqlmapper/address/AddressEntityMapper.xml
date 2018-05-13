@@ -4,6 +4,10 @@
   <resultMap id="BaseResultMap" type="com.mmbaby.address.entity.AddressEntity" >
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="customer_id" property="customerId" jdbcType="INTEGER" />
+    <result column="address" property="address" jdbcType="VARCHAR" />
+    <result column="country" property="country" jdbcType="INTEGER" />
+    <result column="province" property="province" jdbcType="INTEGER" />
+    <result column="city" property="city" jdbcType="INTEGER" />
     <result column="receive_name" property="receiveName" jdbcType="VARCHAR" />
     <result column="mobile" property="mobile" jdbcType="VARCHAR" />
     <result column="zip" property="zip" jdbcType="VARCHAR" />
@@ -73,8 +77,8 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, customer_id, receive_name, mobile, zip, default_address, create_time, update_time, 
-    create_id, update_id, validity
+    id, customer_id, address, country, province, city, receive_name, mobile, zip, default_address, 
+    create_time, update_time, create_id, update_id, validity
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mmbaby.address.entity.AddressEntityExample" >
     select
@@ -108,14 +112,18 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.mmbaby.address.entity.AddressEntity" >
-    insert into address (id, customer_id, receive_name, 
-      mobile, zip, default_address, 
-      create_time, update_time, create_id, 
-      update_id, validity)
-    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{receiveName,jdbcType=VARCHAR}, 
-      #{mobile,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, #{defaultAddress,jdbcType=TINYINT}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, 
-      #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT})
+    insert into address (id, customer_id, address, 
+      country, province, city, 
+      receive_name, mobile, zip, 
+      default_address, create_time, update_time, 
+      create_id, update_id, validity
+      )
+    values (#{id,jdbcType=INTEGER}, #{customerId,jdbcType=INTEGER}, #{address,jdbcType=VARCHAR}, 
+      #{country,jdbcType=INTEGER}, #{province,jdbcType=INTEGER}, #{city,jdbcType=INTEGER}, 
+      #{receiveName,jdbcType=VARCHAR}, #{mobile,jdbcType=VARCHAR}, #{zip,jdbcType=VARCHAR}, 
+      #{defaultAddress,jdbcType=TINYINT}, #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{createId,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.mmbaby.address.entity.AddressEntity" >
     insert into address
@@ -125,6 +133,18 @@
       </if>
       <if test="customerId != null" >
         customer_id,
+      </if>
+      <if test="address != null" >
+        address,
+      </if>
+      <if test="country != null" >
+        country,
+      </if>
+      <if test="province != null" >
+        province,
+      </if>
+      <if test="city != null" >
+        city,
       </if>
       <if test="receiveName != null" >
         receive_name,
@@ -160,6 +180,18 @@
       </if>
       <if test="customerId != null" >
         #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        #{country,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        #{city,jdbcType=INTEGER},
       </if>
       <if test="receiveName != null" >
         #{receiveName,jdbcType=VARCHAR},
@@ -205,6 +237,18 @@
       <if test="record.customerId != null" >
         customer_id = #{record.customerId,jdbcType=INTEGER},
       </if>
+      <if test="record.address != null" >
+        address = #{record.address,jdbcType=VARCHAR},
+      </if>
+      <if test="record.country != null" >
+        country = #{record.country,jdbcType=INTEGER},
+      </if>
+      <if test="record.province != null" >
+        province = #{record.province,jdbcType=INTEGER},
+      </if>
+      <if test="record.city != null" >
+        city = #{record.city,jdbcType=INTEGER},
+      </if>
       <if test="record.receiveName != null" >
         receive_name = #{record.receiveName,jdbcType=VARCHAR},
       </if>
@@ -241,6 +285,10 @@
     update address
     set id = #{record.id,jdbcType=INTEGER},
       customer_id = #{record.customerId,jdbcType=INTEGER},
+      address = #{record.address,jdbcType=VARCHAR},
+      country = #{record.country,jdbcType=INTEGER},
+      province = #{record.province,jdbcType=INTEGER},
+      city = #{record.city,jdbcType=INTEGER},
       receive_name = #{record.receiveName,jdbcType=VARCHAR},
       mobile = #{record.mobile,jdbcType=VARCHAR},
       zip = #{record.zip,jdbcType=VARCHAR},
@@ -259,6 +307,18 @@
     <set >
       <if test="customerId != null" >
         customer_id = #{customerId,jdbcType=INTEGER},
+      </if>
+      <if test="address != null" >
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="country != null" >
+        country = #{country,jdbcType=INTEGER},
+      </if>
+      <if test="province != null" >
+        province = #{province,jdbcType=INTEGER},
+      </if>
+      <if test="city != null" >
+        city = #{city,jdbcType=INTEGER},
       </if>
       <if test="receiveName != null" >
         receive_name = #{receiveName,jdbcType=VARCHAR},
@@ -293,6 +353,10 @@
   <update id="updateByPrimaryKey" parameterType="com.mmbaby.address.entity.AddressEntity" >
     update address
     set customer_id = #{customerId,jdbcType=INTEGER},
+      address = #{address,jdbcType=VARCHAR},
+      country = #{country,jdbcType=INTEGER},
+      province = #{province,jdbcType=INTEGER},
+      city = #{city,jdbcType=INTEGER},
       receive_name = #{receiveName,jdbcType=VARCHAR},
       mobile = #{mobile,jdbcType=VARCHAR},
       zip = #{zip,jdbcType=VARCHAR},

@@ -7,6 +7,14 @@ public class AddressEntity {
 
     private Integer customerId;
 
+    private String address;
+
+    private Integer country;
+
+    private Integer province;
+
+    private Integer city;
+
     private String receiveName;
 
     private String mobile;
@@ -39,6 +47,38 @@ public class AddressEntity {
 
     public void setCustomerId(Integer customerId) {
         this.customerId = customerId;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address == null ? null : address.trim();
+    }
+
+    public Integer getCountry() {
+        return country;
+    }
+
+    public void setCountry(Integer country) {
+        this.country = country;
+    }
+
+    public Integer getProvince() {
+        return province;
+    }
+
+    public void setProvince(Integer province) {
+        this.province = province;
+    }
+
+    public Integer getCity() {
+        return city;
+    }
+
+    public void setCity(Integer city) {
+        this.city = city;
     }
 
     public String getReceiveName() {
