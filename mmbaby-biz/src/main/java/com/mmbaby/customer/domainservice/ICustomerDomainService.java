@@ -15,4 +15,10 @@ public interface ICustomerDomainService {
      */
     CustomerDTO saveSelective(CustomerDTO customerDTO);
 
+    /**
+     * 根据客户名称查询客户信息
+     * @param customerName
+     * @return
+     */
+    CustomerDTO queryCustomerByName(String customerName);
 }

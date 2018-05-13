@@ -1,11 +1,15 @@
 package com.mmbaby.customer.domainservice.impl;
 
+import com.dianping.pigeon.util.CollectionUtils;
 import com.mmbaby.customer.domainservice.ICustomerDomainService;
 import com.mmbaby.customer.dto.domain.CustomerDTO;
 import com.mmbaby.customer.entity.CustomerEntity;
+import com.mmbaby.customer.entity.CustomerEntityExample;
 import com.mmbaby.customer.mapper.CustomerEntityMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
 
 /**
  * @author Wanghui Fu
@@ -38,6 +42,29 @@ public class CustomerDomainServiceImpl implements ICustomerDomainService {
         }
 
         return entity2Dto(customerEntity);
+    }
+
+    /**
+     * 根据客户名称查询客户信息
+     *
+     * @param customerName
+     * @return
+     */
+    @Override
+    public CustomerDTO queryCustomerByName(String customerName) {
+        CustomerDTO customerDTO = new CustomerDTO();
+
+        CustomerEntityExample example = new CustomerEntityExample();
+        CustomerEntityExample.Criteria criteria = example.createCriteria();
+
+        criteria.andCustomerNameEqualTo(customerName);
+
+        List<CustomerEntity> customerEntityList = customerEntityMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(customerEntityList)) {
+            customerDTO = entity2Dto(customerEntityList.get(0));
+        }
+
+        return customerDTO;
     }
 
     private CustomerDTO entity2Dto(CustomerEntity entity) {

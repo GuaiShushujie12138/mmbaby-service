@@ -12,6 +12,8 @@ public class CustomerSubmitDTO implements Serializable {
 
     private static final long serialVersionUID = 58594432895134017L;
 
+    private Integer id;
+
     private String customerName;
 
     private String mobile;
@@ -35,6 +37,14 @@ public class CustomerSubmitDTO implements Serializable {
     private Integer province;
 
     private Integer city;
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
+    }
 
     public String getCustomerName() {
         return customerName;
@@ -135,6 +145,7 @@ public class CustomerSubmitDTO implements Serializable {
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
+                .add("id", id)
                 .add("customerName", customerName)
                 .add("mobile", mobile)
                 .add("email", email)

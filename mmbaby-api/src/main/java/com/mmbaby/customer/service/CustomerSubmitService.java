@@ -1,6 +1,7 @@
 package com.mmbaby.customer.service;
 
 import com.mmbaby.base.util.GeneralResult;
+import com.mmbaby.customer.dto.domain.CustomerDTO;
 import com.mmbaby.customer.dto.submitbiz.CustomerSubmitDTO;
 
 /**
@@ -14,6 +15,19 @@ public interface CustomerSubmitService {
      * @param customerSubmitDTO
      * @return
      */
-    GeneralResult submit(CustomerSubmitDTO customerSubmitDTO);
+    GeneralResult<CustomerDTO> submit(CustomerSubmitDTO customerSubmitDTO);
 
+    /**
+     * 更新客户信息
+     * @param customerSubmitDTO
+     * @return
+     */
+    GeneralResult<CustomerDTO> updateCustomerInfo(CustomerSubmitDTO customerSubmitDTO);
+
+    /**
+     * 客户登陆
+     * @param customerSubmitDTO
+     * @return
+     */
+    GeneralResult<CustomerDTO> login(CustomerSubmitDTO customerSubmitDTO);
 }
