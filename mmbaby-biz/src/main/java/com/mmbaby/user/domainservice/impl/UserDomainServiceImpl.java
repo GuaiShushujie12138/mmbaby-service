@@ -1,12 +1,16 @@
 package com.mmbaby.user.domainservice.impl;
 
+import com.dianping.pigeon.util.CollectionUtils;
 import com.mmbaby.user.domainservice.IUserDomainService;
 import com.mmbaby.user.dto.domain.UserDTO;
 import com.mmbaby.user.entity.UserEntity;
+import com.mmbaby.user.entity.UserEntityExample;
 import com.mmbaby.user.mapper.UserEntityMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Wanghui Fu
@@ -41,6 +45,30 @@ public class UserDomainServiceImpl implements IUserDomainService {
         }
 
         return entity2Dto(userEntity);
+    }
+
+    /**
+     * 根据用户名查询用户信息
+     *
+     * @param userName
+     * @return
+     */
+    @Override
+    public UserDTO queryUserByName(String userName) {
+        UserDTO userDTO = new UserDTO();
+
+        UserEntityExample example = new UserEntityExample();
+        UserEntityExample.Criteria criteria = example.createCriteria();
+
+        criteria.andUserNameEqualTo(userName);
+
+        List<UserEntity> userEntityList = userEntityMapper.selectByExample(example);
+
+        if (!CollectionUtils.isEmpty(userEntityList)) {
+            userDTO = entity2Dto(userEntityList.get(0));
+        }
+
+        return userDTO;
     }
 
     private UserDTO entity2Dto(UserEntity entity) {

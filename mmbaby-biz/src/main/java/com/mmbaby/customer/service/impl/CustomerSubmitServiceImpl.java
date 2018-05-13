@@ -91,5 +91,4 @@ public class CustomerSubmitServiceImpl implements CustomerSubmitService {
         return new GeneralResult();
     }
 
-
 }

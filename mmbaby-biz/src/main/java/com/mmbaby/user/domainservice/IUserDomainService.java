@@ -15,4 +15,10 @@ public interface IUserDomainService {
      */
     UserDTO saveSelective(UserDTO userDTO);
 
+    /**
+     * 根据用户名查询用户信息
+     * @param userName
+     * @return
+     */
+    UserDTO queryUserByName(String userName);
 }
