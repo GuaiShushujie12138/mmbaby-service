@@ -1,11 +1,16 @@
 package com.mmbaby.base.util;
 
+import com.google.common.base.MoreObjects;
+import lombok.ToString;
+
 /**
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/8 at 10:04
  *
  * 基础返回对象
  */
+
+@ToString
 public class GeneralResult<T> {
 
     private T data;
@@ -56,4 +61,5 @@ public class GeneralResult<T> {
     public void setMsg(String msg) {
         this.msg = msg;
     }
+
 }

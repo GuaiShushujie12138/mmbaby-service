@@ -70,6 +70,29 @@ public class CustomerDomainServiceImpl implements ICustomerDomainService {
         return customerDTO;
     }
 
+    /**
+     * 根据注册手机号查询客户信息
+     *
+     * @param mobile
+     * @return
+     */
+    @Override
+    public CustomerDTO queryCustomerByMobile(String mobile) {
+        CustomerDTO customerDTO = new CustomerDTO();
+
+        CustomerEntityExample example = new CustomerEntityExample();
+        CustomerEntityExample.Criteria criteria = example.createCriteria();
+
+        criteria.andMobileEqualTo(mobile);
+
+        List<CustomerEntity> customerEntityList = customerEntityMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(customerEntityList)) {
+            customerDTO = entity2Dto(customerEntityList.get(0));
+        }
+
+        return customerDTO;
+    }
+
     private CustomerDTO entity2Dto(CustomerEntity entity) {
 
         if (null == entity) {

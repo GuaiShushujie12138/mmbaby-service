@@ -21,4 +21,11 @@ public interface ICustomerDomainService {
      * @return
      */
     CustomerDTO queryCustomerByName(String customerName);
+
+    /**
+     * 根据注册手机号查询客户信息
+     * @param mobile
+     * @return
+     */
+    CustomerDTO queryCustomerByMobile(String mobile);
 }
