@@ -110,7 +110,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mmbaby.order.entity.OrderEntity" >
+  <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.mmbaby.order.entity.OrderEntity" >
     insert into order (id, customer_id, amount, 
       number, freight, leave_message, 
       logistics, address_id, status, 
@@ -122,7 +122,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, 
       #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.mmbaby.order.entity.OrderEntity" >
+  <insert id="insertSelective" parameterType="com.mmbaby.order.entity.OrderEntity" useGeneratedKeys="true" keyProperty="id" >
     insert into order
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

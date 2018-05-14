@@ -6,11 +6,14 @@ import com.mmbaby.address.dto.domain.AddressDTO;
 import com.mmbaby.address.dto.submitbiz.AddressSubmitDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/13 at 20:00
  */
+
+@Service
 public class AddressSubmitBizServiceImpl implements IAddressSubmitBizService {
 
     @Autowired

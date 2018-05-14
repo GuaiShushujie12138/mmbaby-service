@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service;
  * Created by Guaishushu on 2018/5/13 at 19:58
  */
 
-@Service
+@Service("addressSubmitService")
 public class AddressSubmitServiceImpl implements AddressSubmitService {
 
     @Autowired

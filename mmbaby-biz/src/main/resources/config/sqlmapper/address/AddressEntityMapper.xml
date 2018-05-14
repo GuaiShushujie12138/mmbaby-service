@@ -111,7 +111,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mmbaby.address.entity.AddressEntity" >
+  <insert id="insert" parameterType="com.mmbaby.address.entity.AddressEntity" useGeneratedKeys="true" keyProperty="id" >
     insert into address (id, customer_id, address, 
       country, province, city, 
       receive_name, mobile, zip, 
@@ -125,7 +125,7 @@
       #{createId,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.mmbaby.address.entity.AddressEntity" >
+  <insert id="insertSelective" parameterType="com.mmbaby.address.entity.AddressEntity" useGeneratedKeys="true" keyProperty="id" >
     insert into address
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

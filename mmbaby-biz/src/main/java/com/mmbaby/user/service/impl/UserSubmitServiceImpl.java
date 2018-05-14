@@ -9,11 +9,14 @@ import com.mmbaby.user.dto.submitbiz.UserSubmitDTO;
 import com.mmbaby.user.service.UserSubmitService;
 import com.site.lookup.util.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/13 at 15:43
  */
+
+@Service("userSubmitService")
 public class UserSubmitServiceImpl implements UserSubmitService {
 
     @Autowired

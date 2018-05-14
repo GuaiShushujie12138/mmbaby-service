@@ -7,6 +7,7 @@ import com.mmbaby.user.dto.domain.UserDTO;
 import com.mmbaby.user.dto.submitbiz.UserSubmitDTO;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.Date;
 
@@ -14,6 +15,8 @@ import java.util.Date;
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/13 at 15:46
  */
+
+@Service
 public class UserSubmitBizServiceImpl implements IUserSubmitBizService {
 
     @Autowired

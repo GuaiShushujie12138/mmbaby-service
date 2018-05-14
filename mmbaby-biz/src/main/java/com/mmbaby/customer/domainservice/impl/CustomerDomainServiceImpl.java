@@ -8,6 +8,7 @@ import com.mmbaby.customer.entity.CustomerEntityExample;
 import com.mmbaby.customer.mapper.CustomerEntityMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 
@@ -15,6 +16,8 @@ import java.util.List;
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/11 at 10:35
  */
+
+@Service
 public class CustomerDomainServiceImpl implements ICustomerDomainService {
 
     @Autowired

@@ -106,7 +106,7 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mmbaby.comment.entity.CommentEntity" >
+  <insert id="insert" parameterType="com.mmbaby.comment.entity.CommentEntity" useGeneratedKeys="true" keyProperty="id" >
     insert into comment (id, customer_id, item_id, 
       content, star, create_time, 
       update_time, create_id, update_id, 
@@ -116,7 +116,7 @@
       #{updateTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, #{updateId,jdbcType=VARCHAR}, 
       #{validity,jdbcType=TINYINT})
   </insert>
-  <insert id="insertSelective" parameterType="com.mmbaby.comment.entity.CommentEntity" >
+  <insert id="insertSelective" parameterType="com.mmbaby.comment.entity.CommentEntity" useGeneratedKeys="true" keyProperty="id" >
     insert into comment
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >

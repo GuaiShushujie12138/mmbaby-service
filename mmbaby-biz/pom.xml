@@ -147,16 +147,16 @@
         </dependency>
 
         <!-- zebra 点评提供的数据库连接库 -->
-        <dependency>
-            <groupId>com.dianping.zebra</groupId>
-            <artifactId>zebra-api</artifactId>
-            <version>${zebra.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>com.dianping.zebra</groupId>
-            <artifactId>zebra-ds-monitor-client</artifactId>
-            <version>${zebra.version}</version>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>com.dianping.zebra</groupId>-->
+            <!--<artifactId>zebra-api</artifactId>-->
+            <!--<version>${zebra.version}</version>-->
+        <!--</dependency>-->
+        <!--<dependency>-->
+            <!--<groupId>com.dianping.zebra</groupId>-->
+            <!--<artifactId>zebra-ds-monitor-client</artifactId>-->
+            <!--<version>${zebra.version}</version>-->
+        <!--</dependency>-->
 
         <!-- cat 用作性能监控，有空可以接一下 -->
         <!--<dependency>-->

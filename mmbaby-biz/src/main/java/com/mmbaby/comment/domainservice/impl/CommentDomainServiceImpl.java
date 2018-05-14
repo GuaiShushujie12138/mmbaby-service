@@ -6,11 +6,14 @@ import com.mmbaby.comment.entity.CommentEntity;
 import com.mmbaby.comment.mapper.CommentEntityMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/11 at 10:20
  */
+
+@Service
 public class CommentDomainServiceImpl implements ICommentDomainService {
 
     @Autowired

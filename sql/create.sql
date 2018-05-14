@@ -103,6 +103,7 @@ CREATE TABLE `order` (
   `logistics` int(10) unsigned NOT NULL DEFAULT '10' COMMENT '物流, 10-顺丰速递，20-EMS速递，30-德邦快运，40-任意物流',
   `address_id` int(10) unsigned NOT NULL DEFAULT '1000' COMMENT '收货地址id',
   `status` int(3) unsigned NOT NULL DEFAULT '10' COMMENT '订单状态: 10-待支付,20-待收货,30-待评价,40-完成,100-取消',
+  `pay_way` int(3) unsigned NOT NULL DEFAULT '10' COMMENT '支付方式: 10-支付宝, 20-微信支付, 30-银行卡支付',
   `create_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP COMMENT '创建时间',
   `update_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP COMMENT '修改时间',
   `create_id` varchar(80) NOT NULL DEFAULT 'sys' COMMENT '创建人',
