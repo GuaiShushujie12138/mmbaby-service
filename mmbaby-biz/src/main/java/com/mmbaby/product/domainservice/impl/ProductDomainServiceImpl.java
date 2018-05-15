@@ -1,12 +1,17 @@
 package com.mmbaby.product.domainservice.impl;
 
+import com.dianping.pigeon.util.CollectionUtils;
+import com.google.common.collect.Lists;
 import com.mmbaby.product.domainservice.IProductDomainService;
 import com.mmbaby.product.dto.domain.ProductDTO;
 import com.mmbaby.product.entity.ProductEntity;
+import com.mmbaby.product.entity.ProductEntityExample;
 import com.mmbaby.product.mapper.ProductEntityMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Wanghui Fu
@@ -41,6 +46,84 @@ public class ProductDomainServiceImpl implements IProductDomainService {
         }
 
         return entity2Dto(productEntity);
+    }
+
+    /**
+     * 根据productId 查询商品
+     *
+     * @param productId
+     * @return
+     */
+    @Override
+    public ProductDTO queryProductById(Integer productId) {
+
+        return entity2Dto(productEntityMapper.selectByPrimaryKey(productId));
+    }
+
+    /**
+     * 根据多重查询条件查询商品list
+     *
+     * @param productDTO
+     * @return
+     */
+    @Override
+    public List<ProductDTO> queryProductList(ProductDTO productDTO) {
+        ProductEntityExample example = new ProductEntityExample();
+        ProductEntityExample.Criteria criteria = example.createCriteria();
+
+        // 设置查询条件
+        setQueryConditions(criteria, productDTO);
+
+        List<ProductEntity> productEntityList = productEntityMapper.selectByExample(example);
+
+        return entity2Dto(productEntityList);
+    }
+
+    /**
+     * 设置查询条件
+     * @param criteria
+     * @param productDTO
+     */
+    private void setQueryConditions(ProductEntityExample.Criteria criteria, ProductDTO productDTO) {
+        // 热卖条件
+        if (productDTO.getHot() != null) {
+            criteria.andHotEqualTo(productDTO.getHot());
+        }
+
+        // 小分类条件
+        if (productDTO.getCategory() != null) {
+            criteria.andCategoryEqualTo(productDTO.getCategory());
+        }
+
+        // 价格区间条件
+        if (productDTO.getPriceRegion() != null) {
+            criteria.andPriceRegionEqualTo(productDTO.getPriceRegion());
+        }
+
+        // 商家条件
+        if (productDTO.getShopId() != null) {
+            criteria.andShopIdEqualTo(productDTO.getShopId());
+        }
+
+        // 年龄区间条件
+        if (productDTO.getAgeRegion() != null) {
+            criteria.andAgeRegionEqualTo(productDTO.getAgeRegion());
+        }
+
+        // 店长推荐条件
+        if (productDTO.getRecommend() != null) {
+            criteria.andRecommendEqualTo(productDTO.getRecommend());
+        }
+    }
+
+    private List<ProductDTO> entity2Dto(List<ProductEntity> productEntityList) {
+        List<ProductDTO> productList = Lists.newArrayList();
+
+        for (ProductEntity productEntity : productEntityList) {
+            productList.add(entity2Dto(productEntity));
+        }
+
+        return productList;
     }
 
     private ProductDTO entity2Dto(ProductEntity entity) {

@@ -145,6 +145,9 @@ public class CustomerSubmitBizServiceImpl implements ICustomerSubmitBizService {
 
         BeanUtils.copyProperties(customerSubmitDTO, customerDTO);
 
+        // 密码加密
+        customerDTO.setPassword(MD5Util.getMD5ofStr(customerDTO.getPassword()));
+
         return customerDTO;
     }
 }

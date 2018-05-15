@@ -11,6 +11,10 @@
                 <!--TODO  暴露服务-->
                 <entry key="http://service.mmaaby.com/customer_submit_service_1.0.0"
                        value-ref="customerSubmitService"/>
+                <entry key="http://service.mmaaby.com/customer_query_service_1.0.0"
+                       value-ref="customerQueryService"/>
+                <entry key="http://service.mmaaby.com/address_submit_service_1.0.0"
+                       value-ref="addressSubmitService"/>
             </map>
         </property>
     </bean>

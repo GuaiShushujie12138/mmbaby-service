@@ -3,6 +3,8 @@ package com.mmbaby.base.util;
 import com.google.common.base.MoreObjects;
 import lombok.ToString;
 
+import java.io.Serializable;
+
 /**
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/8 at 10:04
@@ -11,7 +13,7 @@ import lombok.ToString;
  */
 
 @ToString
-public class GeneralResult<T> {
+public class GeneralResult<T> implements Serializable {
 
     private T data;
 

@@ -9,6 +9,7 @@ import com.site.lookup.util.StringUtils;
 import lombok.extern.log4j.Log4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 /**
  * @author Wanghui Fu
@@ -16,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
  */
 
 @Log4j
+@Service
 public class CustomerQueryBizServiceImpl implements ICustomerQueryBizService {
 
     @Autowired
