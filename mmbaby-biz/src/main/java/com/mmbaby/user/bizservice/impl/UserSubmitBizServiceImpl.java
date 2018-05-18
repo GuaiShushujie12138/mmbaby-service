@@ -1,5 +1,6 @@
 package com.mmbaby.user.bizservice.impl;
 
+import com.mmbaby.base.exception.SaveFailedException;
 import com.mmbaby.base.util.security.MD5Util;
 import com.mmbaby.user.bizservice.IUserSubmitBizService;
 import com.mmbaby.user.domainservice.IUserDomainService;
@@ -64,11 +65,28 @@ public class UserSubmitBizServiceImpl implements IUserSubmitBizService {
      */
     @Override
     public UserDTO updateUserInfo(UserSubmitDTO userSubmitDTO) {
+        // 更新用户参数校验
+        checkUpdateArgs(userSubmitDTO);
+
         UserDTO userDTO = buildUserDTO(userSubmitDTO);
 
         userDTO.setUpdateTime(new Date());
 
         return userDomainService.saveSelective(userDTO);
+    }
+
+    /**
+     * 更新用户的参数校验
+     * @param userSubmitDTO
+     */
+    private void checkUpdateArgs(UserSubmitDTO userSubmitDTO) {
+        if (userSubmitDTO == null) {
+            throw new SaveFailedException("userSubmitDTO 对象不能为空");
+        }
+
+        if (userSubmitDTO.getId() == null) {
+            throw new SaveFailedException("更新的id 不能为空");
+        }
     }
 
     /**

@@ -71,6 +71,9 @@ public class CustomerSubmitServiceImpl implements CustomerSubmitService {
         }
 
         CustomerDTO customerDTO = customerSubmitBizService.login(customerSubmitDTO);
+        if (customerDTO == null) {
+            return new ErrorResult("用户名或者密码错误");
+        }
 
         return new GeneralResult(customerDTO);
     }

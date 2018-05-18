@@ -38,7 +38,8 @@ public class OrderSubmitBizServiceImpl implements IOrderSubmitBizService {
 
         OrderDTO orderDTO = buildOrderDTO(orderSubmitDTO);
 
-        OrderDTO returnOrderDTO = orderDomainService.saveSelective(orderDTO);
+        OrderDTO returnOrderDTO =
+                orderDomainService.saveSelective(orderDTO);
 
         // 插入订单项数据
         insertOrderLine(returnOrderDTO, orderSubmitDTO);
@@ -65,7 +66,8 @@ public class OrderSubmitBizServiceImpl implements IOrderSubmitBizService {
      * @param returnOrderDTO
      * @param orderSubmitDTO
      */
-    private void insertOrderLine(OrderDTO returnOrderDTO, OrderSubmitDTO orderSubmitDTO) {
+    private void insertOrderLine(OrderDTO returnOrderDTO,
+                                 OrderSubmitDTO orderSubmitDTO) {
         Integer orderId = returnOrderDTO.getId();
 
         for (OrderLineDTO orderLineDTO : orderSubmitDTO.getOrderLineList()) {

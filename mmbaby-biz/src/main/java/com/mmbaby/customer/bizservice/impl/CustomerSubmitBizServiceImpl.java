@@ -50,7 +50,8 @@ public class CustomerSubmitBizServiceImpl implements ICustomerSubmitBizService {
      * @param customerSubmitDTO
      */
     @Override
-    public CustomerDTO updateCustomerInfo(CustomerSubmitDTO customerSubmitDTO) {
+    public CustomerDTO updateCustomerInfo(
+            CustomerSubmitDTO customerSubmitDTO) {
         CustomerDTO customerDTO = buildCustomerDTO(customerSubmitDTO);
 
         // update 更新时间
@@ -68,7 +69,8 @@ public class CustomerSubmitBizServiceImpl implements ICustomerSubmitBizService {
     @Override
     public CustomerDTO login(CustomerSubmitDTO customerSubmitDTO) {
         // 根据客户登陆的名字查询对应的数据库客户信息
-        CustomerDTO customerDTO = customerDomainService.queryCustomerByName(customerSubmitDTO.getCustomerName());
+        CustomerDTO customerDTO = customerDomainService.
+                queryCustomerByName(customerSubmitDTO.getCustomerName());
 
         // 进行客户名称和密码的匹配
         boolean isCorrect = isCorrect(customerDTO, customerSubmitDTO);
@@ -77,7 +79,7 @@ public class CustomerSubmitBizServiceImpl implements ICustomerSubmitBizService {
             return customerDTO;
         }
 
-        return new CustomerDTO();
+        return null;
     }
 
     /**
@@ -126,9 +128,11 @@ public class CustomerSubmitBizServiceImpl implements ICustomerSubmitBizService {
      * @param customerSubmitDTO
      * @return
      */
-    private boolean isCorrect(CustomerDTO customerDTO, CustomerSubmitDTO customerSubmitDTO) {
+    private boolean isCorrect(CustomerDTO customerDTO,
+                              CustomerSubmitDTO customerSubmitDTO) {
         if (customerDTO == null
-                || MD5Util.getMD5ofStr(customerSubmitDTO.getPassword()).equals(customerDTO.getPassword())) {
+                || MD5Util.getMD5ofStr(customerSubmitDTO.getPassword())
+                .equals(customerDTO.getPassword())) {
             return false;
         }
 

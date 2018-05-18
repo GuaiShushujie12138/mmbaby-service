@@ -30,6 +30,7 @@ public class UserSubmitServiceImpl implements UserSubmitService {
      */
     @Override
     public GeneralResult<UserDTO> login(UserSubmitDTO userSubmitDTO) {
+        // 登陆参数检查
         GeneralResult generalResult = checkLoginArgs(userSubmitDTO);
 
         if (!generalResult.isSuccess()) {
@@ -62,7 +63,9 @@ public class UserSubmitServiceImpl implements UserSubmitService {
      */
     @Override
     public GeneralResult<UserDTO> updateUserInfo(UserSubmitDTO userSubmitDTO) {
-        return null;
+        UserDTO userDTO = userSubmitBizService.updateUserInfo(userSubmitDTO);
+
+        return new GeneralResult<>(userDTO);
     }
 
     /**
