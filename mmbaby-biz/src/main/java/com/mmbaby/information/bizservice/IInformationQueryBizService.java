@@ -1,5 +1,4 @@
-package com.mmbaby.information.domainservice;
-
+package com.mmbaby.information.bizservice;
 
 import com.mmbaby.information.dto.domain.InformationDTO;
 
@@ -7,16 +6,9 @@ import java.util.List;
 
 /**
  * @author Wanghui Fu
- * Created by Guaishushu on 2018/5/11 at 10:39
+ * Created by Guaishushu on 2018/5/18 at 20:55
  */
-public interface IInformationDomainService {
-
-    /**
-     * 保存或者更新资讯
-     * @param customerDTO
-     * @return
-     */
-    InformationDTO saveSelective(InformationDTO customerDTO);
+public interface IInformationQueryBizService {
 
     /**
      * 查询最近的一条资讯

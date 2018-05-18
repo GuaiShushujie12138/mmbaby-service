@@ -1,16 +1,24 @@
 package com.mmbaby.information.domainservice.impl;
 
+import com.dianping.pigeon.util.CollectionUtils;
+import com.google.common.collect.Lists;
 import com.mmbaby.information.domainservice.IInformationDomainService;
 import com.mmbaby.information.dto.domain.InformationDTO;
 import com.mmbaby.information.entity.InformationEntity;
+import com.mmbaby.information.entity.InformationEntityExample;
 import com.mmbaby.information.mapper.InformationEntityMapper;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 /**
  * @author Wanghui Fu
  * Created by Guaishushu on 2018/5/11 at 11:06
  */
+
+@Service
 public class InformationDomainServiceImpl implements IInformationDomainService {
 
     @Autowired
@@ -38,6 +46,52 @@ public class InformationDomainServiceImpl implements IInformationDomainService {
         }
 
         return entity2Dto(informationEntity);
+    }
+
+    /**
+     * 查询最近的一条资讯
+     *
+     * @return
+     */
+    @Override
+    public InformationDTO queryLastInformation() {
+        InformationEntityExample example = new InformationEntityExample();
+        example.setOrderByClause("create_time desc");
+
+        List<InformationEntity> informationEntityList = informationEntityMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(informationEntityList)) {
+            return entity2Dto(informationEntityList.get(0));
+        }
+
+        return null;
+    }
+
+    /**
+     * 查询资讯列表
+     *
+     * @return
+     */
+    @Override
+    public List<InformationDTO> queryInformationList() {
+        InformationEntityExample example = new InformationEntityExample();
+        example.setOrderByClause("create_time desc");
+
+        List<InformationEntity> informationEntityList = informationEntityMapper.selectByExample(example);
+        if (!CollectionUtils.isEmpty(informationEntityList)) {
+            return entity2Dto(informationEntityList);
+        }
+
+        return null;
+    }
+
+    private List<InformationDTO> entity2Dto(List<InformationEntity> informationEntityList) {
+        List<InformationDTO> informationList = Lists.newArrayList();
+
+        for (InformationEntity informationEntity : informationEntityList) {
+            informationList.add(entity2Dto(informationEntity));
+        }
+
+        return informationList;
     }
 
     private InformationDTO entity2Dto(InformationEntity entity) {

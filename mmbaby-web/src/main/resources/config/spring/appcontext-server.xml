@@ -31,6 +31,10 @@
                        value-ref="shopQueryService"/>
                 <entry key="http://service.mmaaby.com/user_submit_service_1.0.0"
                        value-ref="userSubmitService"/>
+                <entry key="http://service.mmaaby.com/information_query_service_1.0.0"
+                       value-ref="informationQueryService"/>
+                <entry key="http://service.mmaaby.com/information_submit_service_1.0.0"
+                       value-ref="informationSubmitService"/>
             </map>
         </property>
     </bean>
