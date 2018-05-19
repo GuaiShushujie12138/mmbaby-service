@@ -15,4 +15,10 @@ public interface IOrderDomainService {
      */
     OrderDTO saveSelective(OrderDTO orderDTO);
 
+    /**
+     * 根据order id 查询订单信息
+     * @param orderId
+     * @return
+     */
+    OrderDTO queryById(Integer orderId);
 }

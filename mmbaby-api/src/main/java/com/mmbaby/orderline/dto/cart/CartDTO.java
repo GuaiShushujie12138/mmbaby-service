@@ -43,10 +43,12 @@ public class CartDTO implements Serializable {
 
         if (productMap.containsKey(productId)) {
             OrderLineDTO orderLineDTO = productMap.get(productId);
+            orderLineDTO.setProduct(productDTO);
             orderLineDTO.setNumber(orderLineDTO.getNumber() + num);
             orderLineDTO.setAmount(orderLineDTO.getAmount() + productDTO.getPrice() * num);
         } else {
             OrderLineDTO orderLineDTO = new OrderLineDTO();
+            orderLineDTO.setProduct(productDTO);
             orderLineDTO.setNumber(num);
             orderLineDTO.setAmount(productDTO.getPrice() * num);
             orderLineDTO.setItemId(productId);
