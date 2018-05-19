@@ -15,6 +15,8 @@ public class ProductDTO implements Serializable {
 
     private Integer id;
 
+    private String name;
+
     private Long shopId;
 
     private Integer inventory;
@@ -213,10 +215,19 @@ public class ProductDTO implements Serializable {
         this.validity = validity;
     }
 
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
     @Override
     public String toString() {
         return MoreObjects.toStringHelper(this)
                 .add("id", id)
+                .add("name", name)
                 .add("shopId", shopId)
                 .add("inventory", inventory)
                 .add("price", price)

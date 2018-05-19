@@ -53,6 +53,7 @@ CREATE TABLE `customer` (
 DROP TABLE if exists `product`;
 CREATE TABLE `product` (
   `id` int(10) unsigned NOT NULL AUTO_INCREMENT COMMENT '商品ID',
+  `name` varchar(50) NOT NULL DEFAULT '' COMMENT '商品名字',
   `shop_id` bigint(20) unsigned NOT NULL DEFAULT '0' COMMENT '卖家编号',
   `inventory` int(10) unsigned NOT NULL DEFAULT '0' COMMENT '库存',
   `price` double(10, 2) NOT NULL DEFAULT '0.00' COMMENT'单价',

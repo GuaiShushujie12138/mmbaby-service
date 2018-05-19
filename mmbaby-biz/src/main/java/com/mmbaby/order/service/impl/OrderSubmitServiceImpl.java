@@ -1,5 +1,6 @@
 package com.mmbaby.order.service.impl;
 
+import com.mmbaby.base.util.ErrorResult;
 import com.mmbaby.base.util.GeneralResult;
 import com.mmbaby.order.bizservice.IOrderSubmitBizService;
 import com.mmbaby.order.dto.domain.OrderDTO;
@@ -30,5 +31,22 @@ public class OrderSubmitServiceImpl implements OrderSubmitService {
         OrderDTO orderDTO = orderSubmitBizService.saveOrder(orderSubmitDTO);
 
         return new GeneralResult(orderDTO);
+    }
+
+    /**
+     * 更新订单状态
+     *
+     * @param orderSubmitDTO
+     * @return
+     */
+    @Override
+    public GeneralResult<OrderDTO> updateOrder(OrderSubmitDTO orderSubmitDTO) {
+        OrderDTO orderDTO = orderSubmitBizService.updateOrder(orderSubmitDTO);
+
+        if (orderDTO == null) {
+            return new ErrorResult("该订单不存在");
+        }
+
+        return new GeneralResult<>(orderDTO);
     }
 }

@@ -43,6 +43,8 @@ public class ProductEntity {
 
     private Boolean validity;
 
+    private String name;
+
     public Integer getId() {
         return id;
     }
@@ -201,5 +203,13 @@ public class ProductEntity {
 
     public void setValidity(Boolean validity) {
         this.validity = validity;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name == null ? null : name.trim();
     }
 }

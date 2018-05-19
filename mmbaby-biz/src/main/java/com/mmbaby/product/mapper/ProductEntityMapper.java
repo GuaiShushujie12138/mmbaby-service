@@ -4,9 +4,7 @@ import com.mmbaby.product.entity.ProductEntity;
 import com.mmbaby.product.entity.ProductEntityExample;
 import java.util.List;
 import org.apache.ibatis.annotations.Param;
-import org.springframework.stereotype.Repository;
 
-@Repository
 public interface ProductEntityMapper {
     int countByExample(ProductEntityExample example);
 

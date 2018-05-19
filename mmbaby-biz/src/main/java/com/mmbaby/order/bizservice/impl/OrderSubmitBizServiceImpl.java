@@ -44,7 +44,23 @@ public class OrderSubmitBizServiceImpl implements IOrderSubmitBizService {
         // 插入订单项数据
         insertOrderLine(returnOrderDTO, orderSubmitDTO);
 
-        return orderDTO;
+        return returnOrderDTO;
+    }
+
+    /**
+     * 更新订单数据
+     *
+     * @param orderSubmitDTO
+     * @return
+     */
+    @Override
+    public OrderDTO updateOrder(OrderSubmitDTO orderSubmitDTO) {
+        OrderDTO orderDTO = buildOrderDTO(orderSubmitDTO);
+
+        OrderDTO returnOrderDTO =
+                orderDomainService.saveSelective(orderDTO);
+
+        return returnOrderDTO;
     }
 
     /**

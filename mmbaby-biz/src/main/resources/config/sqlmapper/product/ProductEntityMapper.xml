@@ -22,6 +22,7 @@
     <result column="create_id" property="createId" jdbcType="VARCHAR" />
     <result column="update_id" property="updateId" jdbcType="VARCHAR" />
     <result column="validity" property="validity" jdbcType="TINYINT" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -84,7 +85,7 @@
   <sql id="Base_Column_List" >
     id, shop_id, inventory, price, discount_price, discount, hot, recommend, sales, pic, 
     price_region, type, sex, age_region, category, create_time, update_time, create_id, 
-    update_id, validity
+    update_id, validity, name
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mmbaby.product.entity.ProductEntityExample" >
     select
@@ -117,23 +118,25 @@
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.mmbaby.product.entity.ProductEntity" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insert" parameterType="com.mmbaby.product.entity.ProductEntity" >
     insert into product (id, shop_id, inventory, 
       price, discount_price, discount, 
       hot, recommend, sales, 
       pic, price_region, type, 
       sex, age_region, category, 
       create_time, update_time, create_id, 
-      update_id, validity)
+      update_id, validity, name
+      )
     values (#{id,jdbcType=INTEGER}, #{shopId,jdbcType=BIGINT}, #{inventory,jdbcType=INTEGER}, 
       #{price,jdbcType=DOUBLE}, #{discountPrice,jdbcType=DOUBLE}, #{discount,jdbcType=INTEGER}, 
       #{hot,jdbcType=TINYINT}, #{recommend,jdbcType=TINYINT}, #{sales,jdbcType=INTEGER}, 
       #{pic,jdbcType=VARCHAR}, #{priceRegion,jdbcType=INTEGER}, #{type,jdbcType=INTEGER}, 
       #{sex,jdbcType=INTEGER}, #{ageRegion,jdbcType=INTEGER}, #{category,jdbcType=INTEGER}, 
       #{createTime,jdbcType=TIMESTAMP}, #{updateTime,jdbcType=TIMESTAMP}, #{createId,jdbcType=VARCHAR}, 
-      #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT})
+      #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT}, #{name,jdbcType=VARCHAR}
+      )
   </insert>
-  <insert id="insertSelective" parameterType="com.mmbaby.product.entity.ProductEntity" useGeneratedKeys="true" keyProperty="id" >
+  <insert id="insertSelective" parameterType="com.mmbaby.product.entity.ProductEntity" >
     insert into product
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -196,6 +199,9 @@
       <if test="validity != null" >
         validity,
       </if>
+      <if test="name != null" >
+        name,
+      </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
       <if test="id != null" >
@@ -257,6 +263,9 @@
       </if>
       <if test="validity != null" >
         #{validity,jdbcType=TINYINT},
+      </if>
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -329,6 +338,9 @@
       <if test="record.validity != null" >
         validity = #{record.validity,jdbcType=TINYINT},
       </if>
+      <if test="record.name != null" >
+        name = #{record.name,jdbcType=VARCHAR},
+      </if>
     </set>
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
@@ -355,7 +367,8 @@
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_id = #{record.createId,jdbcType=VARCHAR},
       update_id = #{record.updateId,jdbcType=VARCHAR},
-      validity = #{record.validity,jdbcType=TINYINT}
+      validity = #{record.validity,jdbcType=TINYINT},
+      name = #{record.name,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -420,6 +433,9 @@
       <if test="validity != null" >
         validity = #{validity,jdbcType=TINYINT},
       </if>
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
     </set>
     where id = #{id,jdbcType=INTEGER}
   </update>
@@ -443,7 +459,8 @@
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_id = #{createId,jdbcType=VARCHAR},
       update_id = #{updateId,jdbcType=VARCHAR},
-      validity = #{validity,jdbcType=TINYINT}
+      validity = #{validity,jdbcType=TINYINT},
+      name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
 </mapper>

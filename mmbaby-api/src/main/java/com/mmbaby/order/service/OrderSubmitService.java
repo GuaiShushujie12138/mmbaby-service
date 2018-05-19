@@ -17,4 +17,10 @@ public interface OrderSubmitService {
      */
     GeneralResult<OrderDTO> saveOrder(OrderSubmitDTO orderSubmitDTO);
 
+    /**
+     * 更新订单状态
+     * @param orderSubmitDTO
+     * @return
+     */
+    GeneralResult<OrderDTO> updateOrder(OrderSubmitDTO orderSubmitDTO);
 }

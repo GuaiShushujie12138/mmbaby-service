@@ -16,4 +16,10 @@ public interface IOrderSubmitBizService {
      */
     OrderDTO saveOrder(OrderSubmitDTO orderSubmitDTO);
 
+    /**
+     * 更新订单数据
+     * @param orderSubmitDTO
+     * @return
+     */
+    OrderDTO updateOrder(OrderSubmitDTO orderSubmitDTO);
 }

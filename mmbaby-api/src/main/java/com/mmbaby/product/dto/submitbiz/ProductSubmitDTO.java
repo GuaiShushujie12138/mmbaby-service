@@ -20,6 +20,8 @@ public class ProductSubmitDTO implements Serializable {
 
     private Integer id;
 
+    private String name;
+
     private Long shopId;
 
     private Integer inventory;
