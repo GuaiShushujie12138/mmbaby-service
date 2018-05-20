@@ -23,4 +23,10 @@ public interface IShopDomainService {
      */
     List<ShopDTO> queryAllShop();
 
+    /**
+     * 根据id 查询商家信息
+     * @param shopId
+     * @return
+     */
+    ShopDTO queryShopById(Integer shopId);
 }

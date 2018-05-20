@@ -16,4 +16,9 @@ public interface IShopQueryBizService {
      */
     List<ShopDTO> queryAllShop();
 
+    /**
+     * 根据id 查询商家信息
+     * @return
+     */
+    ShopDTO queryShopById(Long shopId);
 }

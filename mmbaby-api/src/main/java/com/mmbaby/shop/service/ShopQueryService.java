@@ -17,4 +17,10 @@ public interface ShopQueryService {
      */
     GeneralResult<List<ShopDTO>> queryAllShop();
 
+    /**
+     * 根据id 查询商家信息
+     * @param shopId
+     * @return
+     */
+    GeneralResult<ShopDTO> queryShopById(Long shopId);
 }

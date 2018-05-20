@@ -60,6 +60,16 @@ public class ShopDomianServiceImpl implements IShopDomainService {
         return entity2Dto(shopEntityMapper.selectByExample(example));
     }
 
+    /**
+     * 根据id 查询商家信息
+     *
+     * @return
+     */
+    @Override
+    public ShopDTO queryShopById(Integer shopId) {
+        return entity2Dto(shopEntityMapper.selectByPrimaryKey(shopId));
+    }
+
     private List<ShopDTO> entity2Dto(List<ShopEntity> shopEntities) {
         List<ShopDTO> shopList = Lists.newArrayList();
 

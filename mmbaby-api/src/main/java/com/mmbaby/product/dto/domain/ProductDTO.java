@@ -19,6 +19,8 @@ public class ProductDTO implements Serializable {
 
     private Long shopId;
 
+    private String shopName;
+
     private Integer inventory;
 
     private Double price;
@@ -69,6 +71,14 @@ public class ProductDTO implements Serializable {
 
     public void setShopId(Long shopId) {
         this.shopId = shopId;
+    }
+
+    public String getShopName() {
+        return shopName;
+    }
+
+    public void setShopName(String shopName) {
+        this.shopName = shopName;
     }
 
     public Integer getInventory() {
@@ -229,6 +239,7 @@ public class ProductDTO implements Serializable {
                 .add("id", id)
                 .add("name", name)
                 .add("shopId", shopId)
+                .add("shopName", shopName)
                 .add("inventory", inventory)
                 .add("price", price)
                 .add("discountPrice", discountPrice)

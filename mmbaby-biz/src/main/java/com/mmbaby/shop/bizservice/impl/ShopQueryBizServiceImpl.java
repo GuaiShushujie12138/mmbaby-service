@@ -28,4 +28,14 @@ public class ShopQueryBizServiceImpl implements IShopQueryBizService {
     public List<ShopDTO> queryAllShop() {
         return shopDomainService.queryAllShop();
     }
+
+    /**
+     * 根据id 查询商家信息
+     *
+     * @return
+     */
+    @Override
+    public ShopDTO queryShopById(Long shopId) {
+        return shopDomainService.queryShopById(Integer.valueOf(shopId.intValue()));
+    }
 }

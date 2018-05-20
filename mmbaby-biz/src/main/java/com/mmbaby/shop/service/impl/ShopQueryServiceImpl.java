@@ -1,5 +1,6 @@
 package com.mmbaby.shop.service.impl;
 
+import com.mmbaby.base.util.ErrorResult;
 import com.mmbaby.base.util.GeneralResult;
 import com.mmbaby.shop.bizservice.IShopQueryBizService;
 import com.mmbaby.shop.dto.domain.ShopDTO;
@@ -30,5 +31,21 @@ public class ShopQueryServiceImpl implements ShopQueryService {
         List<ShopDTO> shopList = shopQueryBizService.queryAllShop();
 
         return new GeneralResult<>(shopList);
+    }
+
+    /**
+     * 根据id 查询商家信息
+     *
+     * @return
+     */
+    @Override
+    public GeneralResult<ShopDTO> queryShopById(Long shopId) {
+        ShopDTO shopDTO = shopQueryBizService.queryShopById(shopId);
+
+        if (shopDTO == null) {
+            return new ErrorResult("查询不到该商家信息");
+        }
+
+        return new GeneralResult<>(shopDTO);
     }
 }
