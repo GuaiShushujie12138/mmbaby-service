@@ -1,5 +1,6 @@
 package com.mmbaby.product.domainservice;
 
+import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.dto.domain.ProductDTO;
 
 import java.util.List;
@@ -29,5 +30,5 @@ public interface IProductDomainService {
      * @param productDTO
      * @return
      */
-    List<ProductDTO> queryProductList(ProductDTO productDTO);
+    List<ProductDTO> queryProductList(ProductDTO productDTO, PageUtil page);
 }

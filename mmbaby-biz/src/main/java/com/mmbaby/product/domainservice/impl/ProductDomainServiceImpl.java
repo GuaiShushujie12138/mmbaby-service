@@ -2,11 +2,13 @@ package com.mmbaby.product.domainservice.impl;
 
 import com.dianping.pigeon.util.CollectionUtils;
 import com.google.common.collect.Lists;
+import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.domainservice.IProductDomainService;
 import com.mmbaby.product.dto.domain.ProductDTO;
 import com.mmbaby.product.entity.ProductEntity;
 import com.mmbaby.product.entity.ProductEntityExample;
 import com.mmbaby.product.mapper.ProductEntityMapper;
+import com.site.lookup.util.StringUtils;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -67,12 +69,21 @@ public class ProductDomainServiceImpl implements IProductDomainService {
      * @return
      */
     @Override
-    public List<ProductDTO> queryProductList(ProductDTO productDTO) {
+    public List<ProductDTO> queryProductList(ProductDTO productDTO, PageUtil page) {
         ProductEntityExample example = new ProductEntityExample();
         ProductEntityExample.Criteria criteria = example.createCriteria();
 
         // 设置查询条件
         setQueryConditions(criteria, productDTO);
+
+        // 设置分页条件
+        example.setPage(page);
+
+        // 设置排序条件
+        if (page != null
+                && !StringUtils.isEmpty(page.getSort())) {
+            example.setOrderByClause(page.getSort());
+        }
 
         List<ProductEntity> productEntityList = productEntityMapper.selectByExample(example);
 
@@ -114,6 +125,7 @@ public class ProductDomainServiceImpl implements IProductDomainService {
         if (productDTO.getRecommend() != null) {
             criteria.andRecommendEqualTo(productDTO.getRecommend());
         }
+
     }
 
     private List<ProductDTO> entity2Dto(List<ProductEntity> productEntityList) {

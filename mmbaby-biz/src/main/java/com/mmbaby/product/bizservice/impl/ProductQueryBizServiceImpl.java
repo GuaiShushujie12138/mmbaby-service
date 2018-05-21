@@ -1,6 +1,7 @@
 package com.mmbaby.product.bizservice.impl;
 
 import com.mmbaby.base.exception.SaveFailedException;
+import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.bizservice.IProductQueryBizService;
 import com.mmbaby.product.domainservice.IProductDomainService;
 import com.mmbaby.product.dto.domain.ProductDTO;
@@ -44,13 +45,13 @@ public class ProductQueryBizServiceImpl implements IProductQueryBizService {
      * @return
      */
     @Override
-    public List<ProductDTO> queryProductList(ProductQueryDTO productQueryDTO) {
+    public List<ProductDTO> queryProductList(ProductQueryDTO productQueryDTO, PageUtil page) {
         // 参数校验
         checkArgs(productQueryDTO);
 
         ProductDTO productDTO = buildProductDTO(productQueryDTO);
 
-        return productDomainService.queryProductList(productDTO);
+        return productDomainService.queryProductList(productDTO, page);
     }
 
     /**

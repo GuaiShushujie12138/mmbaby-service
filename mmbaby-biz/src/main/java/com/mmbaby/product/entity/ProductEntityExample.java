@@ -1,5 +1,7 @@
 package com.mmbaby.product.entity;
 
+import com.mmbaby.base.util.PageUtil;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -10,6 +12,16 @@ public class ProductEntityExample {
     protected boolean distinct;
 
     protected List<Criteria> oredCriteria;
+
+    protected PageUtil page;
+
+    public PageUtil getPage() {
+        return page;
+    }
+
+    public void setPage(PageUtil page) {
+        this.page = page;
+    }
 
     public ProductEntityExample() {
         oredCriteria = new ArrayList<Criteria>();

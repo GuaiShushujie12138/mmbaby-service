@@ -32,8 +32,8 @@ public class CustomerSubmitServiceTest extends BaseJUnitTest {
     private CustomerSubmitDTO buildCustomerSubmitDTO() {
         CustomerSubmitDTO customerSubmitDTO = new CustomerSubmitDTO();
 
-        customerSubmitDTO.setCustomerName("李四");
-        customerSubmitDTO.setPassword(MD5Util.getMD5ofStr("123456"));
+        customerSubmitDTO.setCustomerName("李六");
+        customerSubmitDTO.setPassword(MD5Util.string2MD5("123456"));
 
         return customerSubmitDTO;
     }

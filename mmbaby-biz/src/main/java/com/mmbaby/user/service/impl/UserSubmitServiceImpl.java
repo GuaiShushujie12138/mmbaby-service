@@ -39,6 +39,10 @@ public class UserSubmitServiceImpl implements UserSubmitService {
 
         UserDTO userDTO = userSubmitBizService.login(userSubmitDTO);
 
+        if (userDTO == null) {
+            return new ErrorResult("用户名或者密码错误");
+        }
+
         return new GeneralResult(userDTO);
     }
 

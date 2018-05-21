@@ -131,7 +131,7 @@ public class CustomerSubmitBizServiceImpl implements ICustomerSubmitBizService {
     private boolean isCorrect(CustomerDTO customerDTO,
                               CustomerSubmitDTO customerSubmitDTO) {
         if (customerDTO == null
-                || MD5Util.getMD5ofStr(customerSubmitDTO.getPassword())
+                || !MD5Util.string2MD5(customerSubmitDTO.getPassword())
                 .equals(customerDTO.getPassword())) {
             return false;
         }
@@ -150,7 +150,7 @@ public class CustomerSubmitBizServiceImpl implements ICustomerSubmitBizService {
         BeanUtils.copyProperties(customerSubmitDTO, customerDTO);
 
         // 密码加密
-        customerDTO.setPassword(MD5Util.getMD5ofStr(customerDTO.getPassword()));
+        customerDTO.setPassword(MD5Util.string2MD5(customerDTO.getPassword()));
 
         return customerDTO;
     }

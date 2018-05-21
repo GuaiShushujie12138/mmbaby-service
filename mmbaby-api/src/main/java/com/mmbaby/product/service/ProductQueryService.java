@@ -1,6 +1,7 @@
 package com.mmbaby.product.service;
 
 import com.mmbaby.base.util.GeneralResult;
+import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.dto.domain.ProductDTO;
 import com.mmbaby.product.dto.query.ProductQueryDTO;
 
@@ -20,9 +21,9 @@ public interface ProductQueryService {
     GeneralResult<ProductDTO> queryProductById(Integer productId);
 
     /**
-     * 多重条件查询商品list
+     * 多重条件查询商品list, 分页
      * @param productQueryDTO
      * @return
      */
-    GeneralResult<List<ProductDTO>> queryProductList(ProductQueryDTO productQueryDTO);
+    GeneralResult<List<ProductDTO>> queryProductList(ProductQueryDTO productQueryDTO, PageUtil page);
 }

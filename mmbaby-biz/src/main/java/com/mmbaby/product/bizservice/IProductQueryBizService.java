@@ -1,5 +1,6 @@
 package com.mmbaby.product.bizservice;
 
+import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.dto.domain.ProductDTO;
 import com.mmbaby.product.dto.query.ProductQueryDTO;
 
@@ -25,6 +26,6 @@ public interface IProductQueryBizService {
      * @param productQueryDTO
      * @return
      */
-    List<ProductDTO> queryProductList(ProductQueryDTO productQueryDTO);
+    List<ProductDTO> queryProductList(ProductQueryDTO productQueryDTO, PageUtil page);
 
 }

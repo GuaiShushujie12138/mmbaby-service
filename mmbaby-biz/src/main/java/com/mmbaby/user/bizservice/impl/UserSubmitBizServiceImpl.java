@@ -41,7 +41,7 @@ public class UserSubmitBizServiceImpl implements IUserSubmitBizService {
             return userDTO;
         }
 
-        return new UserDTO();
+        return null;
     }
 
     /**
@@ -99,7 +99,7 @@ public class UserSubmitBizServiceImpl implements IUserSubmitBizService {
         boolean isCorrect = true;
 
         if (userDTO == null
-                || !MD5Util.getMD5ofStr(userSubmitDTO.getPassword()).equals(userDTO.getPassword())) {
+                || !MD5Util.string2MD5(userSubmitDTO.getPassword()).equals(userDTO.getPassword())) {
             isCorrect = false;
         }
 

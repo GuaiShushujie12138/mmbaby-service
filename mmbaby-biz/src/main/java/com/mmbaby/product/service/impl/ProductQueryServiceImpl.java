@@ -1,6 +1,7 @@
 package com.mmbaby.product.service.impl;
 
 import com.mmbaby.base.util.GeneralResult;
+import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.bizservice.IProductQueryBizService;
 import com.mmbaby.product.dto.domain.ProductDTO;
 import com.mmbaby.product.dto.query.ProductQueryDTO;
@@ -41,8 +42,8 @@ public class ProductQueryServiceImpl implements ProductQueryService {
      * @return
      */
     @Override
-    public GeneralResult<List<ProductDTO>> queryProductList(ProductQueryDTO productQueryDTO) {
-        List<ProductDTO> productList = productQueryBizService.queryProductList(productQueryDTO);
+    public GeneralResult<List<ProductDTO>> queryProductList(ProductQueryDTO productQueryDTO, PageUtil page) {
+        List<ProductDTO> productList = productQueryBizService.queryProductList(productQueryDTO, page);
 
         return new GeneralResult<>(productList);
     }
