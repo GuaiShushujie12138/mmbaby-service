@@ -18,4 +18,10 @@ public interface AddressQueryService {
      */
     GeneralResult<List<AddressDTO>> queryAddressListByCustomerId(Integer customerId);
 
+    /**
+     * 根据地址id查询地址详细信息
+     * @param addressId
+     * @return
+     */
+    GeneralResult<AddressDTO> queryByAddressId(Integer addressId);
 }

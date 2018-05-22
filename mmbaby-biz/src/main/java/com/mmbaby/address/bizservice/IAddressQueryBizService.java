@@ -17,4 +17,10 @@ public interface IAddressQueryBizService {
      */
     List<AddressDTO> queryAddressListByCustomerId(Integer customerId);
 
+    /**
+     * 根据addressId 查询地址信息
+     * @param addressId
+     * @return
+     */
+    AddressDTO queryByAddressId(Integer addressId);
 }

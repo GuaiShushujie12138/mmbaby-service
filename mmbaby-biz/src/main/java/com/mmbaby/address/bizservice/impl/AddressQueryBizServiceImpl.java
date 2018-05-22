@@ -35,6 +35,17 @@ public class AddressQueryBizServiceImpl implements IAddressQueryBizService {
     }
 
     /**
+     * 根据addressId 查询地址信息
+     *
+     * @param addressId
+     * @return
+     */
+    @Override
+    public AddressDTO queryByAddressId(Integer addressId) {
+        return addressDomainService.queryByAddressId(addressId);
+    }
+
+    /**
      * 检查参数
      * @param customerId
      */

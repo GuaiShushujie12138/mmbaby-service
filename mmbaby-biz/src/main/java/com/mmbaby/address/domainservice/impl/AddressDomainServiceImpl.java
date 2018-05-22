@@ -67,6 +67,17 @@ public class AddressDomainServiceImpl implements IAddressDomainService {
         return entity2Dto(addressEntityList);
     }
 
+    /**
+     * 根据addressId 查询地址信息
+     *
+     * @param addressId
+     * @return
+     */
+    @Override
+    public AddressDTO queryByAddressId(Integer addressId) {
+        return entity2Dto(addressEntityMapper.selectByPrimaryKey(addressId));
+    }
+
     private AddressDTO entity2Dto(AddressEntity entity) {
 
         if (null == entity) {

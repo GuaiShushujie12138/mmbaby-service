@@ -3,6 +3,7 @@ package com.mmbaby.address.service.impl;
 import com.mmbaby.address.bizservice.IAddressQueryBizService;
 import com.mmbaby.address.dto.domain.AddressDTO;
 import com.mmbaby.address.service.AddressQueryService;
+import com.mmbaby.base.util.ErrorResult;
 import com.mmbaby.base.util.GeneralResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,5 +32,22 @@ public class AddressQueryServiceImpl implements AddressQueryService {
         List<AddressDTO> addressList = addressQueryBizService.queryAddressListByCustomerId(customerId);
 
         return new GeneralResult<>(addressList);
+    }
+
+    /**
+     * 根据地址id查询地址详细信息
+     *
+     * @param addressId
+     * @return
+     */
+    @Override
+    public GeneralResult<AddressDTO> queryByAddressId(Integer addressId) {
+        AddressDTO addressDTO = addressQueryBizService.queryByAddressId(addressId);
+
+        if (addressDTO == null) {
+            return new ErrorResult("地址不存在");
+        }
+
+        return new GeneralResult<>(addressDTO);
     }
 }

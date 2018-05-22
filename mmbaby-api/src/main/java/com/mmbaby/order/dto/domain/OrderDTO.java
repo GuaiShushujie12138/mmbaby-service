@@ -1,9 +1,12 @@
 package com.mmbaby.order.dto.domain;
 
 import com.google.common.base.MoreObjects;
+import com.mmbaby.address.dto.domain.AddressDTO;
+import com.mmbaby.orderline.dto.domain.OrderLineDTO;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 /**
  * @author Wanghui Fu
@@ -40,6 +43,26 @@ public class OrderDTO implements Serializable {
     private String updateId;
 
     private Boolean validity;
+
+    private AddressDTO address;
+
+    private List<OrderLineDTO> orderLineList;
+
+    public List<OrderLineDTO> getOrderLineList() {
+        return orderLineList;
+    }
+
+    public void setOrderLineList(List<OrderLineDTO> orderLineList) {
+        this.orderLineList = orderLineList;
+    }
+
+    public AddressDTO getAddress() {
+        return address;
+    }
+
+    public void setAddress(AddressDTO address) {
+        this.address = address;
+    }
 
     public Integer getId() {
         return id;
