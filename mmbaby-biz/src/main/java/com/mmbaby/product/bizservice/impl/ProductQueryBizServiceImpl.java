@@ -1,5 +1,6 @@
 package com.mmbaby.product.bizservice.impl;
 
+import com.dianping.pigeon.util.CollectionUtils;
 import com.mmbaby.base.exception.SaveFailedException;
 import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.bizservice.IProductQueryBizService;
@@ -52,6 +53,22 @@ public class ProductQueryBizServiceImpl implements IProductQueryBizService {
         ProductDTO productDTO = buildProductDTO(productQueryDTO);
 
         return productDomainService.queryProductList(productDTO, page);
+    }
+
+    /**
+     * 根据关键字搜索商品
+     *
+     * @param pageUtil
+     * @return
+     */
+    @Override
+    public List<ProductDTO> queryByKeyWord(PageUtil pageUtil) {
+        List<ProductDTO> productList = productDomainService.queryByKeyWord(pageUtil);
+
+        if (CollectionUtils.isEmpty(productList)) {
+            productList = productDomainService.queryProductList(null, new PageUtil());
+        }
+        return productList;
     }
 
     /**

@@ -91,6 +91,17 @@ public class ProductDomainServiceImpl implements IProductDomainService {
     }
 
     /**
+     * 根据关键字搜索商品
+     *
+     * @param pageUtil
+     * @return
+     */
+    @Override
+    public List<ProductDTO> queryByKeyWord(PageUtil pageUtil) {
+        return entity2Dto(productEntityMapper.queryByKeyWord(pageUtil));
+    }
+
+    /**
      * 设置查询条件
      * @param criteria
      * @param productDTO

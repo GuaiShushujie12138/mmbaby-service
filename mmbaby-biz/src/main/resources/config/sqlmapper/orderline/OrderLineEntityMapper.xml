@@ -6,7 +6,7 @@
     <result column="item_id" property="itemId" jdbcType="INTEGER" />
     <result column="order_id" property="orderId" jdbcType="INTEGER" />
     <result column="amount" property="amount" jdbcType="DOUBLE" />
-    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="num" property="number" jdbcType="INTEGER" />
     <result column="create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="create_id" property="createId" jdbcType="VARCHAR" />
@@ -72,7 +72,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, item_id, order_id, amount, number, create_time, update_time, create_id, update_id, 
+    id, item_id, order_id, amount, num, create_time, update_time, create_id, update_id,
     validity
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mmbaby.orderline.entity.OrderLineEntityExample" >
@@ -108,7 +108,7 @@
   </delete>
   <insert id="insert" parameterType="com.mmbaby.orderline.entity.OrderLineEntity" useGeneratedKeys="true" keyProperty="id" >
     insert into order_line (id, item_id, order_id, 
-      amount, number, create_time, 
+      amount, num, create_time,
       update_time, create_id, update_id, 
       validity)
     values (#{id,jdbcType=INTEGER}, #{itemId,jdbcType=INTEGER}, #{orderId,jdbcType=INTEGER}, 
@@ -132,7 +132,7 @@
         amount,
       </if>
       <if test="number != null" >
-        number,
+        num,
       </if>
       <if test="createTime != null" >
         create_time,
@@ -205,7 +205,7 @@
         amount = #{record.amount,jdbcType=DOUBLE},
       </if>
       <if test="record.number != null" >
-        number = #{record.number,jdbcType=INTEGER},
+        num = #{record.number,jdbcType=INTEGER},
       </if>
       <if test="record.createTime != null" >
         create_time = #{record.createTime,jdbcType=TIMESTAMP},
@@ -233,7 +233,7 @@
       item_id = #{record.itemId,jdbcType=INTEGER},
       order_id = #{record.orderId,jdbcType=INTEGER},
       amount = #{record.amount,jdbcType=DOUBLE},
-      number = #{record.number,jdbcType=INTEGER},
+      num = #{record.number,jdbcType=INTEGER},
       create_time = #{record.createTime,jdbcType=TIMESTAMP},
       update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       create_id = #{record.createId,jdbcType=VARCHAR},
@@ -256,7 +256,7 @@
         amount = #{amount,jdbcType=DOUBLE},
       </if>
       <if test="number != null" >
-        number = #{number,jdbcType=INTEGER},
+        num = #{number,jdbcType=INTEGER},
       </if>
       <if test="createTime != null" >
         create_time = #{createTime,jdbcType=TIMESTAMP},
@@ -281,7 +281,7 @@
     set item_id = #{itemId,jdbcType=INTEGER},
       order_id = #{orderId,jdbcType=INTEGER},
       amount = #{amount,jdbcType=DOUBLE},
-      number = #{number,jdbcType=INTEGER},
+      num = #{number,jdbcType=INTEGER},
       create_time = #{createTime,jdbcType=TIMESTAMP},
       update_time = #{updateTime,jdbcType=TIMESTAMP},
       create_id = #{createId,jdbcType=VARCHAR},

@@ -31,4 +31,11 @@ public interface IProductDomainService {
      * @return
      */
     List<ProductDTO> queryProductList(ProductDTO productDTO, PageUtil page);
+
+    /**
+     * 根据关键字搜索商品
+     * @param pageUtil
+     * @return
+     */
+    List<ProductDTO> queryByKeyWord(PageUtil pageUtil);
 }

@@ -47,4 +47,17 @@ public class ProductQueryServiceImpl implements ProductQueryService {
 
         return new GeneralResult<>(productList);
     }
+
+    /**
+     * 根据关键字搜索商品
+     *
+     * @param pageUtil
+     * @return
+     */
+    @Override
+    public GeneralResult<List<ProductDTO>> queryByKeyWord(PageUtil pageUtil) {
+        List<ProductDTO> productList = productQueryBizService.queryByKeyWord(pageUtil);
+
+        return new GeneralResult<>(productList);
+    }
 }

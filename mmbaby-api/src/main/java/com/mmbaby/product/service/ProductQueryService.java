@@ -26,4 +26,11 @@ public interface ProductQueryService {
      * @return
      */
     GeneralResult<List<ProductDTO>> queryProductList(ProductQueryDTO productQueryDTO, PageUtil page);
+
+    /**
+     * 根据关键字搜索商品
+     * @param pageUtil
+     * @return
+     */
+    GeneralResult<List<ProductDTO>> queryByKeyWord(PageUtil pageUtil);
 }

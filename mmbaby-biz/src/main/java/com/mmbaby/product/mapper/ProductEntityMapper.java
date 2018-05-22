@@ -1,5 +1,6 @@
 package com.mmbaby.product.mapper;
 
+import com.mmbaby.base.util.PageUtil;
 import com.mmbaby.product.entity.ProductEntity;
 import com.mmbaby.product.entity.ProductEntityExample;
 import java.util.List;
@@ -27,4 +28,6 @@ public interface ProductEntityMapper {
     int updateByPrimaryKeySelective(ProductEntity record);
 
     int updateByPrimaryKey(ProductEntity record);
+
+    List<ProductEntity> queryByKeyWord(PageUtil pageUtil);
 }

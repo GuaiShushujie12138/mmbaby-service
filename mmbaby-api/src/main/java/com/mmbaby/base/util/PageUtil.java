@@ -23,6 +23,9 @@ public class PageUtil implements Serializable {
     // 排序条件
     private String sort;
 
+    // 搜索关键字
+    private String keyWord;
+
     public PageUtil(Integer pageIndex, Integer pageSize) {
         if (pageIndex <= 0) {
             pageIndex = 1;
@@ -49,6 +52,14 @@ public class PageUtil implements Serializable {
 
     public void setPageIndex(Integer pageIndex) {
         this.pageIndex = pageIndex;
+    }
+
+    public String getKeyWord() {
+        return keyWord;
+    }
+
+    public void setKeyWord(String keyWord) {
+        this.keyWord = keyWord;
     }
 
     public Integer getPageSize() {

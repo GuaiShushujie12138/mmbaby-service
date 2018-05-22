@@ -5,7 +5,7 @@
     <id column="id" property="id" jdbcType="INTEGER" />
     <result column="customer_id" property="customerId" jdbcType="INTEGER" />
     <result column="amount" property="amount" jdbcType="DOUBLE" />
-    <result column="number" property="number" jdbcType="INTEGER" />
+    <result column="num" property="number" jdbcType="INTEGER" />
     <result column="freight" property="freight" jdbcType="DOUBLE" />
     <result column="leave_message" property="leaveMessage" jdbcType="VARCHAR" />
     <result column="logistics" property="logistics" jdbcType="INTEGER" />
@@ -76,7 +76,7 @@
     </where>
   </sql>
   <sql id="Base_Column_List" >
-    id, customer_id, amount, number, freight, leave_message, logistics, address_id, status, 
+    id, customer_id, amount, num, freight, leave_message, logistics, address_id, status,
     create_time, update_time, create_id, update_id, validity
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.mmbaby.order.entity.OrderEntityExample" >
@@ -86,7 +86,7 @@
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -97,22 +97,22 @@
   <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
     select 
     <include refid="Base_Column_List" />
-    from order
+    from `order`
     where id = #{id,jdbcType=INTEGER}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
-    delete from order
+    delete from `order`
     where id = #{id,jdbcType=INTEGER}
   </delete>
   <delete id="deleteByExample" parameterType="com.mmbaby.order.entity.OrderEntityExample" >
-    delete from order
+    delete from `order`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
   <insert id="insert" useGeneratedKeys="true" keyProperty="id" parameterType="com.mmbaby.order.entity.OrderEntity" >
-    insert into order (id, customer_id, amount, 
-      number, freight, leave_message, 
+    insert into `order` (id, customer_id, amount,
+      num, freight, leave_message,
       logistics, address_id, status, 
       create_time, update_time, create_id, 
       update_id, validity)
@@ -123,7 +123,7 @@
       #{updateId,jdbcType=VARCHAR}, #{validity,jdbcType=TINYINT})
   </insert>
   <insert id="insertSelective" parameterType="com.mmbaby.order.entity.OrderEntity" useGeneratedKeys="true" keyProperty="id" >
-    insert into order
+    insert into `order`
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="id != null" >
         id,
@@ -135,7 +135,7 @@
         amount,
       </if>
       <if test="number != null" >
-        number,
+        num,
       </if>
       <if test="freight != null" >
         freight,
@@ -214,13 +214,13 @@
     </trim>
   </insert>
   <select id="countByExample" parameterType="com.mmbaby.order.entity.OrderEntityExample" resultType="java.lang.Integer" >
-    select count(*) from order
+    select count(*) from `order`
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map" >
-    update order
+    update `order`
     <set >
       <if test="record.id != null" >
         id = #{record.id,jdbcType=INTEGER},
@@ -232,7 +232,7 @@
         amount = #{record.amount,jdbcType=DOUBLE},
       </if>
       <if test="record.number != null" >
-        number = #{record.number,jdbcType=INTEGER},
+        num = #{record.number,jdbcType=INTEGER},
       </if>
       <if test="record.freight != null" >
         freight = #{record.freight,jdbcType=DOUBLE},
@@ -270,11 +270,11 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map" >
-    update order
+    update `order`
     set id = #{record.id,jdbcType=INTEGER},
       customer_id = #{record.customerId,jdbcType=INTEGER},
       amount = #{record.amount,jdbcType=DOUBLE},
-      number = #{record.number,jdbcType=INTEGER},
+      num = #{record.number,jdbcType=INTEGER},
       freight = #{record.freight,jdbcType=DOUBLE},
       leave_message = #{record.leaveMessage,jdbcType=VARCHAR},
       logistics = #{record.logistics,jdbcType=INTEGER},
@@ -290,7 +290,7 @@
     </if>
   </update>
   <update id="updateByPrimaryKeySelective" parameterType="com.mmbaby.order.entity.OrderEntity" >
-    update order
+    update `order`
     <set >
       <if test="customerId != null" >
         customer_id = #{customerId,jdbcType=INTEGER},
@@ -299,7 +299,7 @@
         amount = #{amount,jdbcType=DOUBLE},
       </if>
       <if test="number != null" >
-        number = #{number,jdbcType=INTEGER},
+        num = #{number,jdbcType=INTEGER},
       </if>
       <if test="freight != null" >
         freight = #{freight,jdbcType=DOUBLE},
@@ -335,10 +335,10 @@
     where id = #{id,jdbcType=INTEGER}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.mmbaby.order.entity.OrderEntity" >
-    update order
+    update `order`
     set customer_id = #{customerId,jdbcType=INTEGER},
       amount = #{amount,jdbcType=DOUBLE},
-      number = #{number,jdbcType=INTEGER},
+      num = #{number,jdbcType=INTEGER},
       freight = #{freight,jdbcType=DOUBLE},
       leave_message = #{leaveMessage,jdbcType=VARCHAR},
       logistics = #{logistics,jdbcType=INTEGER},

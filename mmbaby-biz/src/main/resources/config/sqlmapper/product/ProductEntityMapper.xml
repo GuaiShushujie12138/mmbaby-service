@@ -466,4 +466,12 @@
       name = #{name,jdbcType=VARCHAR}
     where id = #{id,jdbcType=INTEGER}
   </update>
+
+  <select id="queryByKeyWord" parameterType="com.mmbaby.base.util.PageUtil" resultMap="BaseResultMap" >
+    select
+    <include refid="Base_Column_List" />
+    from product
+    where validity = 1 and name LIKE '%' + ${keyWord} + '%'
+    limit ${start}, ${pageSize}
+  </select>
 </mapper>
