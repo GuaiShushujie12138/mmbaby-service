@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+            http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd  
+            http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+
+
+    <!--<bean id="jedisPoolConfig" class="redis.clients.jedis.JedisPoolConfig">-->
+        <!--&lt;!&ndash;<property name="maxTotal" value="1000"/>&ndash;&gt;-->
+        <!--&lt;!&ndash; 控制一个pool可分配多少个jedis实例 &ndash;&gt;-->
+        <!--<property name="maxIdle" value="200"/>-->
+        <!--&lt;!&ndash; 控制一个pool最多有多少个状态为idle(空闲)的jedis实例 &ndash;&gt;-->
+        <!--&lt;!&ndash;<property name="maxWaitMillis" value="2000"/>&ndash;&gt;-->
+        <!--&lt;!&ndash; 表示当borrow一个jedis实例时，最大的等待时间，如果超过等待时间，则直接抛出JedisConnectionException &ndash;&gt;-->
+        <!--<property name="testOnBorrow" value="true"/>-->
+        <!--&lt;!&ndash; 在borrow一个jedis实例时，是否提前进行validate操作；如果为true，则得到的jedis实例均是可用的 &ndash;&gt;-->
+        <!--<property name="testOnReturn" value="true"/>-->
+    <!--</bean>-->
+
+    <!--<bean id="redisDataSource" class="com.lianshang.common.utils.redis.RedisDataSourceImpl"/>-->
+    <!--<bean id="shardedJedisPool" class="redis.clients.jedis.ShardedJedisPool" scope="singleton">-->
+        <!--<constructor-arg index="0" ref="jedisPoolConfig"/>-->
+        <!--<constructor-arg index="1">-->
+            <!--<list>-->
+                <!--<bean class="redis.clients.jedis.JedisShardInfo">-->
+                    <!--<constructor-arg name="host" value="${user-center.redis.host}"/>-->
+                    <!--<constructor-arg name="port" value="${user-center.redis.port}"/>-->
+                <!--</bean>-->
+            <!--</list>-->
+        <!--</constructor-arg>-->
+    <!--</bean>-->
+</beans>

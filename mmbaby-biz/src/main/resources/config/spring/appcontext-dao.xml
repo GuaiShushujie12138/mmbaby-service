@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+  <bean id="addressEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.address.mapper.AddressEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="commentEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.comment.mapper.CommentEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="customerEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.customer.mapper.CustomerEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="informationEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.information.mapper.InformationEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="orderEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.order.mapper.OrderEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="orderLineEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.orderline.mapper.OrderLineEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="productEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.product.mapper.ProductEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="regionEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.region.mapper.RegionEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="shopEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.shop.mapper.ShopEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+  <bean id="userEntityMapper" class="org.mybatis.spring.mapper.MapperFactoryBean">
+    <property name="mapperInterface" value="com.mmbaby.user.mapper.UserEntityMapper"/>
+    <property name="sqlSessionFactory" ref="mmbabySqlSessionFactory"/>
+  </bean>
+
+</beans>

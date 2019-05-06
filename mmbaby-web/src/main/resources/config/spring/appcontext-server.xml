@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util.xsd">
+
+    <bean id="mmbabyRpcServer"
+          class="com.dianping.pigeon.remoting.provider.config.spring.ServiceBean"
+          init-method="init" lazy-init="false">
+        <property name="port" value="53381"/>
+        <property name="services">
+            <map>
+                <!--TODO  暴露服务-->
+                <entry key="http://service.mmaaby.com/customer_submit_service_1.0.0"
+                       value-ref="customerSubmitService"/>
+                <entry key="http://service.mmaaby.com/customer_query_service_1.0.0"
+                       value-ref="customerQueryService"/>
+                <entry key="http://service.mmaaby.com/address_submit_service_1.0.0"
+                       value-ref="addressSubmitService"/>
+                <entry key="http://service.mmaaby.com/address_query_service_1.0.0"
+                       value-ref="addressQueryService"/>
+                <entry key="http://service.mmaaby.com/comment_submit_service_1.0.0"
+                       value-ref="commentSubmitService"/>
+                <entry key="http://service.mmaaby.com/order_submit_service_1.0.0"
+                       value-ref="orderSubmitService"/>
+                <entry key="http://service.mmaaby.com/product_query_service_1.0.0"
+                       value-ref="productQueryService"/>
+                <entry key="http://service.mmaaby.com/product_submit_service_1.0.0"
+                       value-ref="productSubmitService"/>
+                <entry key="http://service.mmaaby.com/shop_query_service_1.0.0"
+                       value-ref="shopQueryService"/>
+                <entry key="http://service.mmaaby.com/user_submit_service_1.0.0"
+                       value-ref="userSubmitService"/>
+                <entry key="http://service.mmaaby.com/information_query_service_1.0.0"
+                       value-ref="informationQueryService"/>
+                <entry key="http://service.mmaaby.com/information_submit_service_1.0.0"
+                       value-ref="informationSubmitService"/>
+                <entry key="http://service.mmaaby.com/order_query_service_1.0.0"
+                       value-ref="orderQueryService"/>
+            </map>
+        </property>
+    </bean>
+
+</beans>

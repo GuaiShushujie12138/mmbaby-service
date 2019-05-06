@@ -10,6 +10,39 @@
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>mmbaby-api</artifactId>
+    <packaging>jar</packaging>
+    <name>mmbaby-api</name>
 
+    <dependencies>
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>${guava.version}</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <version>${lombok.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-test</artifactId>
+            <version>RELEASE</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
+
+    <distributionManagement>
+        <repository>
+            <id>localRepository</id>
+            <url>C:\Users\Guaishushujie\.m2\repository</url>
+        </repository>
+    </distributionManagement>
 </project>
